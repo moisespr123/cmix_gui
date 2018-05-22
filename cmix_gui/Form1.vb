@@ -34,6 +34,14 @@
         Return "N/A"
     End Function
 
+    Private Sub SetVersion(Extension As String)
+        If Extension.Contains("15b") Then cmixVersionDropdown.SelectedItem = "cmix_v15b"
+    End Sub
+
+    Private Sub SetDict(Extension As String)
+        If Extension.Contains("_dict") Then UseEngDictCheckbox.Checked = True Else UseEngDictCheckbox.Checked = False
+    End Sub
+
     Private Sub SetOutputFileNamePathWithoutExtension(Path As String)
         OutputFileTxt.Text = My.Computer.FileSystem.GetParentPath(Path) + "\" + IO.Path.GetFileNameWithoutExtension(Path)
     End Sub
@@ -42,16 +50,11 @@
         Dim CheckIfFile = CheckIfFileOrFolder(Path)
         If CheckIfFile = "File" Then
             Dim FileExtension As String = IO.Path.GetExtension(Path)
-            If FileExtension = ".cmix15b" Then
-                cmixVersionDropdown.SelectedItem = "cmix_v15b"
-                UseEngDictCheckbox.Checked = False
-                ExtractRButton.Checked = True
+            If FileExtension.Contains("cmix") Then
+                SetVersion(FileExtension)
+                SetDict(FileExtension)
                 SetOutputFileNamePathWithoutExtension(Path)
-            ElseIf FileExtension = ".cmix15b_dict" Then
-                cmixVersionDropdown.SelectedItem = "cmix_v15b"
-                UseEngDictCheckbox.Checked = True
                 ExtractRButton.Checked = True
-                SetOutputFileNamePathWithoutExtension(Path)
             End If
             If CompressRButton.Checked Then
                 OutputFileName = Path + ".cmix"
