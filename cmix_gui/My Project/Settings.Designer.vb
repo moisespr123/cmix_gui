@@ -80,25 +80,13 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("cmix_v15b")>  _
         Public Property Version() As String
             Get
                 Return CType(Me("Version"),String)
             End Get
             Set
                 Me("Version") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("cmix_v15b")>  _
-        Public Property Setting() As String
-            Get
-                Return CType(Me("Setting"),String)
-            End Get
-            Set
-                Me("Setting") = value
             End Set
         End Property
         

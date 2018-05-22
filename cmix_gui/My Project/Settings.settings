@@ -9,9 +9,6 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="Version" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Setting" Type="System.String" Scope="User">
       <Value Profile="(Default)">cmix_v15b</Value>
     </Setting>
     <Setting Name="UseEngDict" Type="System.Boolean" Scope="User">
