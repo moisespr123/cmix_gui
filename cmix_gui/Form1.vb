@@ -31,6 +31,17 @@
         End If
         Return "N/A"
     End Function
+
+    Private Function GetInputNameAndUpdateForm(Path As String) As String
+        Dim CheckIfFile = CheckIfFileOrFolder(Path)
+        If CheckIfFile = "File" Then
+            If CompressRButton.Checked Then
+                OutputFileName = Path + ".cmix"
+                SetOutputFilename()
+            End If
+        End If
+        Return Path
+    End Function
     Private Sub BrowseButton1_Click(sender As Object, e As EventArgs) Handles BrowseButton1.Click
         OpenFileDialog1.Title = InputFileTxt.Text
         OpenFileDialog1.Filter = "All files (*.*)|*.*"
@@ -39,16 +50,14 @@
         End If
         Dim response As DialogResult = OpenFileDialog1.ShowDialog
         If response = DialogResult.OK Then
-            InputFileTxt.Text = OpenFileDialog1.FileName
-            CheckIfFileOrFolder(InputFileTxt.Text)
+            InputFileTxt.Text = GetInputNameAndUpdateForm(OpenFileDialog1.FileName)
         End If
     End Sub
 
     Private Sub BrowseFolder_Click(sender As Object, e As EventArgs) Handles BrowseFolder.Click
         Dim response As DialogResult = FolderBrowserDialog1.ShowDialog()
         If response = DialogResult.OK Then
-            InputFileTxt.Text = FolderBrowserDialog1.SelectedPath
-            CheckIfFileOrFolder(InputFileTxt.Text)
+            InputFileTxt.Text = GetInputNameAndUpdateForm(FolderBrowserDialog1.SelectedPath)
         End If
     End Sub
 
@@ -66,15 +75,15 @@
     End Sub
 
     Private Sub SetOutputFilename()
-        If cmixVersionDropdown.SelectedItem = "cmix_v15b" Then
-            OutputFileTxt.Text = OutputFileName + "15b"
-            cmix_version = "15b"
-        End If
+        OutputFileTxt.Text = OutputFileName + cmix_version
     End Sub
 
     Private Sub cmixVersionDropdown_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmixVersionDropdown.SelectedIndexChanged
         My.Settings.Version = cmixVersionDropdown.SelectedItem
         My.Settings.Save()
+        If cmixVersionDropdown.SelectedItem = "cmix_v15b" Then
+            cmix_version = "15b"
+        End If
         If OutputFileName IsNot String.Empty Then
             SetOutputFilename()
         End If
@@ -88,13 +97,14 @@
 
     Private Sub Form1_DragDrop(sender As Object, e As DragEventArgs) Handles MyBase.DragDrop
         InputFileTxt.Text = e.Data.GetData(DataFormats.FileDrop)(0)
-        CheckIfFileOrFolder(InputFileTxt.Text)
+        GetInputNameAndUpdateForm(InputFileTxt.Text)
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CompressRButton.Checked = My.Settings.Compress
         ExtractRButton.Checked = My.Settings.Extract
         cmixVersionDropdown.SelectedItem = My.Settings.Version
+        UseEngDictCheckbox.Checked = My.Settings.UseEngDict
     End Sub
 
     Private Sub Run_cmix(Input As String, Output As String, action As String)
@@ -127,21 +137,27 @@
     Private Sub StartButton_Click(sender As Object, e As EventArgs) Handles StartButton.Click
         If InputFileTxt.Text IsNot String.Empty Then
             Dim ProcessAction As String = String.Empty
+
             If CompressRButton.Checked Then ProcessAction = "-c" Else ProcessAction = "-d"
+            If My.Settings.UseEngDict Then ProcessAction = ProcessAction + " english.dic"
             Dim CheckInput As String = CheckIfFileOrFolder(InputFileTxt.Text)
-            If CheckInput = "File" Then
-                If OutputFileTxt.Text IsNot String.Empty Then
-                    Run_cmix(InputFileTxt.Text, OutputFileTxt.Text, ProcessAction)
+                If CheckInput = "File" Then
+                    If OutputFileTxt.Text IsNot String.Empty Then
+                        Run_cmix(InputFileTxt.Text, OutputFileTxt.Text, ProcessAction)
+                    End If
+                ElseIf CheckInput = "Folder" Then
+                    ProcessFolder(InputFileTxt.Text, ProcessAction)
                 End If
-            ElseIf CheckInput = "Folder" Then
-                ProcessFolder(InputFileTxt.Text, ProcessAction)
+                MessageBox.Show("Finished!")
             End If
-            MessageBox.Show("Finished!")
-        End If
     End Sub
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         Process.Start("https://github.com/byronknoll/cmix")
     End Sub
 
+    Private Sub UseEngDictCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles UseEngDictCheckbox.CheckedChanged
+        My.Settings.UseEngDict = UseEngDictCheckbox.Checked
+        My.Settings.Save()
+    End Sub
 End Class
