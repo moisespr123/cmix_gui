@@ -21,12 +21,12 @@
 
     Private Function CheckIfFileOrFolder(PathToCheck As String) As String
         If My.Computer.FileSystem.FileExists(PathToCheck) Then
-            OutputFileMessage.Text = My.Resources.CompressOutputMessage
+            If CompressRButton.Checked Then OutputFileMessage.Text = My.Resources.CompressOutputMessage
             OutputFileTxt.Enabled = True
             BrowseButton2.Enabled = True
             Return "File"
         ElseIf My.Computer.FileSystem.DirectoryExists(PathToCheck) Then
-            OutputFileMessage.Text = My.Resources.CompressFolderSelectedMessage
+            If CompressRButton.Checked Then OutputFileMessage.Text = My.Resources.CompressFolderSelectedMessage
             OutputFileTxt.Enabled = False
             BrowseButton2.Enabled = False
             Return "Folder"
