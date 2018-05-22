@@ -1,12 +1,14 @@
 ﻿Public Class Form1
     Private OutputFileName As String = String.Empty
     Private cmix_version As String = String.Empty
+    Private dict As String = String.Empty
     Private Sub CompressRButton_CheckedChanged(sender As Object, e As EventArgs) Handles CompressRButton.CheckedChanged
         InputFileMessage.Text = My.Resources.CompressInputMessage
         OutputFileMessage.Text = My.Resources.CompressOutputMessage
         BrowseFolder.Enabled = True
         My.Settings.Compress = CompressRButton.Checked
         My.Settings.Save()
+        If InputFileTxt.Text IsNot String.Empty Then GetInputNameAndUpdateForm(InputFileTxt.Text)
     End Sub
 
     Private Sub ExtractRButton_CheckedChanged(sender As Object, e As EventArgs) Handles ExtractRButton.CheckedChanged
@@ -18,18 +20,16 @@
     End Sub
 
     Private Function CheckIfFileOrFolder(PathToCheck As String) As String
-        If CompressRButton.Checked Then
-            If My.Computer.FileSystem.FileExists(PathToCheck) Then
-                OutputFileMessage.Text = My.Resources.CompressOutputMessage
-                OutputFileTxt.Enabled = True
-                BrowseButton2.Enabled = True
-                Return "File"
-            ElseIf My.Computer.FileSystem.DirectoryExists(PathToCheck) Then
-                OutputFileMessage.Text = My.Resources.CompressFolderSelectedMessage
-                OutputFileTxt.Enabled = False
-                BrowseButton2.Enabled = False
-                Return "Folder"
-            End If
+        If My.Computer.FileSystem.FileExists(PathToCheck) Then
+            OutputFileMessage.Text = My.Resources.CompressOutputMessage
+            OutputFileTxt.Enabled = True
+            BrowseButton2.Enabled = True
+            Return "File"
+        ElseIf My.Computer.FileSystem.DirectoryExists(PathToCheck) Then
+            OutputFileMessage.Text = My.Resources.CompressFolderSelectedMessage
+            OutputFileTxt.Enabled = False
+            BrowseButton2.Enabled = False
+            Return "Folder"
         End If
         Return "N/A"
     End Function
@@ -37,6 +37,18 @@
     Private Function GetInputNameAndUpdateForm(Path As String) As String
         Dim CheckIfFile = CheckIfFileOrFolder(Path)
         If CheckIfFile = "File" Then
+            Dim FileExtension As String = IO.Path.GetExtension(Path)
+            If FileExtension = ".cmix15b" Then
+                cmixVersionDropdown.SelectedItem = "cmix_v15b"
+                UseEngDictCheckbox.Checked = False
+                ExtractRButton.Checked = True
+                OutputFileTxt.Text = My.Computer.FileSystem.GetParentPath(Path) + "\" + IO.Path.GetFileNameWithoutExtension(Path)
+            ElseIf FileExtension = ".cmix15b_dict" Then
+                cmixVersionDropdown.SelectedItem = "cmix_v15b"
+                UseEngDictCheckbox.Checked = True
+                ExtractRButton.Checked = True
+                OutputFileTxt.Text = My.Computer.FileSystem.GetParentPath(Path) + "\" + IO.Path.GetFileNameWithoutExtension(Path)
+            End If
             If CompressRButton.Checked Then
                 OutputFileName = Path + ".cmix"
                 SetOutputFilename()
@@ -44,6 +56,7 @@
         End If
         Return Path
     End Function
+
     Private Sub BrowseButton1_Click(sender As Object, e As EventArgs) Handles BrowseButton1.Click
         OpenFileDialog1.Title = InputFileTxt.Text
         OpenFileDialog1.Filter = "All files (*.*)|*.*"
@@ -71,13 +84,17 @@
         End If
         Dim response As DialogResult = SaveFileDialog1.ShowDialog
         If response = DialogResult.OK Then
-            OutputFileName = SaveFileDialog1.FileName
-            If CompressRButton.Checked Then SetOutputFilename()
+            If CompressRButton.Checked Then
+                OutputFileName = SaveFileDialog1.FileName
+                If CompressRButton.Checked Then SetOutputFilename()
+            Else
+                OutputFileTxt.Text = SaveFileDialog1.FileName
+            End If
         End If
     End Sub
 
     Private Sub SetOutputFilename()
-        OutputFileTxt.Text = OutputFileName + cmix_version
+        If CompressRButton.Checked Then OutputFileTxt.Text = OutputFileName + cmix_version + dict
     End Sub
 
     Private Sub cmixVersionDropdown_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmixVersionDropdown.SelectedIndexChanged
@@ -121,7 +138,7 @@
 
     Public Sub ProcessFiles(Folder As String, Action As String)
         For Each File In IO.Directory.GetFiles(Folder)
-            Run_cmix(File, File + ".cmix" + cmix_version, Action)
+            Run_cmix(File, File + ".cmix" + cmix_version + dict, Action)
         Next
     End Sub
 
@@ -139,16 +156,15 @@
     Private Sub StartButton_Click(sender As Object, e As EventArgs) Handles StartButton.Click
         If InputFileTxt.Text IsNot String.Empty Then
             Dim ProcessAction As String = String.Empty
-
             If CompressRButton.Checked Then ProcessAction = "-c" Else ProcessAction = "-d"
             If My.Settings.UseEngDict Then ProcessAction = ProcessAction + " english.dic"
             Dim CheckInput As String = CheckIfFileOrFolder(InputFileTxt.Text)
-                If CheckInput = "File" Then
-                    If OutputFileTxt.Text IsNot String.Empty Then
-                        Run_cmix(InputFileTxt.Text, OutputFileTxt.Text, ProcessAction)
-                    End If
-                ElseIf CheckInput = "Folder" Then
-                    ProcessFolder(InputFileTxt.Text, ProcessAction)
+            If CheckInput = "File" Then
+                If OutputFileTxt.Text IsNot String.Empty Then
+                    Run_cmix(InputFileTxt.Text, OutputFileTxt.Text, ProcessAction)
+                End If
+            ElseIf CheckInput = "Folder" Then
+                ProcessFolder(InputFileTxt.Text, ProcessAction)
                 End If
                 MessageBox.Show("Finished!")
             End If
@@ -161,5 +177,9 @@
     Private Sub UseEngDictCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles UseEngDictCheckbox.CheckedChanged
         My.Settings.UseEngDict = UseEngDictCheckbox.Checked
         My.Settings.Save()
+        If UseEngDictCheckbox.Checked Then dict = "_dict" Else dict = String.Empty
+        If OutputFileName IsNot String.Empty Then
+            SetOutputFilename()
+        End If
     End Sub
 End Class
