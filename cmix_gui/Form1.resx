@@ -117,19 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CompressFolderSelectedMessage" xml:space="preserve">
-    <value>Compressed files will be saved at the input folder</value>
-  </data>
-  <data name="CompressInputMessage" xml:space="preserve">
-    <value>Step 1: Browse for a file to compress:</value>
-  </data>
-  <data name="CompressOutputMessage" xml:space="preserve">
-    <value>Step 2: Browse for a location to save the compressed file:</value>
-  </data>
-  <data name="ExtractInputMessage" xml:space="preserve">
-    <value>Step 1: Browse for a compressed file to extract:</value>
-  </data>
-  <data name="ExtractOutputMessage" xml:space="preserve">
-    <value>Step 2: Browse for a location to save the extracted file:</value>
-  </data>
+  <metadata name="SaveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OpenFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>154, 17</value>
+  </metadata>
+  <metadata name="FolderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>296, 17</value>
+  </metadata>
 </root>
