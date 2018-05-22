@@ -34,6 +34,10 @@
         Return "N/A"
     End Function
 
+    Private Sub SetOutputFileNamePathWithoutExtension(Path As String)
+        OutputFileTxt.Text = My.Computer.FileSystem.GetParentPath(Path) + "\" + IO.Path.GetFileNameWithoutExtension(Path)
+    End Sub
+
     Private Function GetInputNameAndUpdateForm(Path As String) As String
         Dim CheckIfFile = CheckIfFileOrFolder(Path)
         If CheckIfFile = "File" Then
@@ -42,12 +46,12 @@
                 cmixVersionDropdown.SelectedItem = "cmix_v15b"
                 UseEngDictCheckbox.Checked = False
                 ExtractRButton.Checked = True
-                OutputFileTxt.Text = My.Computer.FileSystem.GetParentPath(Path) + "\" + IO.Path.GetFileNameWithoutExtension(Path)
+                SetOutputFileNamePathWithoutExtension(Path)
             ElseIf FileExtension = ".cmix15b_dict" Then
                 cmixVersionDropdown.SelectedItem = "cmix_v15b"
                 UseEngDictCheckbox.Checked = True
                 ExtractRButton.Checked = True
-                OutputFileTxt.Text = My.Computer.FileSystem.GetParentPath(Path) + "\" + IO.Path.GetFileNameWithoutExtension(Path)
+                SetOutputFileNamePathWithoutExtension(Path)
             End If
             If CompressRButton.Checked Then
                 OutputFileName = Path + ".cmix"
