@@ -70,7 +70,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Step 1: Browse for a file to compress:.
+        '''  Looks up a localized string similar to Step 1: Browse for a file or folder to compress:.
         '''</summary>
         Friend ReadOnly Property CompressInputMessage() As String
             Get
@@ -102,6 +102,33 @@ Namespace My.Resources
         Friend ReadOnly Property ExtractOutputMessage() As String
             Get
                 Return ResourceManager.GetString("ExtractOutputMessage", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Preprocessed files will be saved at the input folder.
+        '''</summary>
+        Friend ReadOnly Property PreprocessFolderSelectedMessage() As String
+            Get
+                Return ResourceManager.GetString("PreprocessFolderSelectedMessage", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Step 1: Browse for a file or folder to preprocess:.
+        '''</summary>
+        Friend ReadOnly Property PreprocessInputMessage() As String
+            Get
+                Return ResourceManager.GetString("PreprocessInputMessage", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Step 2: Browse for a location to save the preprocessed file:.
+        '''</summary>
+        Friend ReadOnly Property PreprocessOutputMessage() As String
+            Get
+                Return ResourceManager.GetString("PreprocessOutputMessage", resourceCulture)
             End Get
         End Property
     End Module

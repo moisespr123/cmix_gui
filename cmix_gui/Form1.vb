@@ -6,6 +6,7 @@
         InputFileMessage.Text = My.Resources.CompressInputMessage
         OutputFileMessage.Text = My.Resources.CompressOutputMessage
         BrowseFolder.Enabled = True
+        UseEngDictCheckbox.Enabled = True
         My.Settings.Compress = CompressRButton.Checked
         My.Settings.Save()
         If InputFileTxt.Text IsNot String.Empty Then GetInputNameAndUpdateForm(InputFileTxt.Text)
@@ -15,8 +16,21 @@
         InputFileMessage.Text = My.Resources.ExtractInputMessage
         OutputFileMessage.Text = My.Resources.ExtractOutputMessage
         BrowseFolder.Enabled = False
+        UseEngDictCheckbox.Enabled = True
         My.Settings.Extract = ExtractRButton.Checked
         My.Settings.Save()
+    End Sub
+
+
+    Private Sub PreprocessRButton_CheckedChanged(sender As Object, e As EventArgs) Handles PreprocessRButton.CheckedChanged
+        InputFileMessage.Text = My.Resources.PreprocessInputMessage
+        OutputFileMessage.Text = My.Resources.PreprocessOutputMessage
+        BrowseFolder.Enabled = True
+        My.Settings.Preprocess = PreprocessRButton.Checked
+        My.Settings.Save()
+        UseEngDictCheckbox.Checked = True
+        UseEngDictCheckbox.Enabled = False
+        If InputFileTxt.Text IsNot String.Empty Then GetInputNameAndUpdateForm(InputFileTxt.Text)
     End Sub
 
     Private Function CheckIfFileOrFolder(PathToCheck As String) As String
@@ -26,7 +40,11 @@
             BrowseButton2.Enabled = True
             Return "File"
         ElseIf My.Computer.FileSystem.DirectoryExists(PathToCheck) Then
-            If CompressRButton.Checked Then OutputFileMessage.Text = My.Resources.CompressFolderSelectedMessage
+            If CompressRButton.Checked Then
+                OutputFileMessage.Text = My.Resources.CompressFolderSelectedMessage
+            ElseIf PreprocessRButton.Checked Then
+                OutputFileMessage.Text = My.Resources.PreprocessFolderSelectedMessage
+            End If
             OutputFileTxt.Enabled = False
             BrowseButton2.Enabled = False
             Return "Folder"
@@ -129,6 +147,7 @@
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CompressRButton.Checked = My.Settings.Compress
         ExtractRButton.Checked = My.Settings.Extract
+        PreprocessRButton.Checked = My.Settings.Preprocess
         cmixVersionDropdown.SelectedItem = My.Settings.Version
         UseEngDictCheckbox.Checked = My.Settings.UseEngDict
     End Sub
@@ -163,7 +182,13 @@
     Private Sub StartButton_Click(sender As Object, e As EventArgs) Handles StartButton.Click
         If InputFileTxt.Text IsNot String.Empty Then
             Dim ProcessAction As String = String.Empty
-            If CompressRButton.Checked Then ProcessAction = "-c" Else ProcessAction = "-d"
+            If CompressRButton.Checked Then
+                ProcessAction = "-c"
+            ElseIf PreprocessRButton.Checked Then
+                ProcessAction = "-s"
+            Else
+                ProcessAction = "-d"
+            End If
             If My.Settings.UseEngDict Then ProcessAction = ProcessAction + " english.dic"
             Dim CheckInput As String = CheckIfFileOrFolder(InputFileTxt.Text)
             If CheckInput = "File" Then
@@ -189,4 +214,5 @@
             SetOutputFilename()
         End If
     End Sub
+
 End Class

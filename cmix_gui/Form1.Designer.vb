@@ -44,6 +44,7 @@ Partial Class Form1
         Me.BrowseFolder = New System.Windows.Forms.Button()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.UseEngDictCheckbox = New System.Windows.Forms.CheckBox()
+        Me.PreprocessRButton = New System.Windows.Forms.RadioButton()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -61,7 +62,7 @@ Partial Class Form1
         Me.InputFileTxt.Location = New System.Drawing.Point(12, 86)
         Me.InputFileTxt.Name = "InputFileTxt"
         Me.InputFileTxt.Size = New System.Drawing.Size(237, 20)
-        Me.InputFileTxt.TabIndex = 1
+        Me.InputFileTxt.TabIndex = 3
         '
         'OutputFileMessage
         '
@@ -77,15 +78,16 @@ Partial Class Form1
         Me.OutputFileTxt.Location = New System.Drawing.Point(12, 125)
         Me.OutputFileTxt.Name = "OutputFileTxt"
         Me.OutputFileTxt.Size = New System.Drawing.Size(237, 20)
-        Me.OutputFileTxt.TabIndex = 3
+        Me.OutputFileTxt.TabIndex = 6
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.PreprocessRButton)
         Me.GroupBox1.Controls.Add(Me.ExtractRButton)
         Me.GroupBox1.Controls.Add(Me.CompressRButton)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(150, 46)
+        Me.GroupBox1.Size = New System.Drawing.Size(276, 46)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "I want to:"
@@ -93,10 +95,10 @@ Partial Class Form1
         'ExtractRButton
         '
         Me.ExtractRButton.AutoSize = True
-        Me.ExtractRButton.Location = New System.Drawing.Point(83, 19)
+        Me.ExtractRButton.Location = New System.Drawing.Point(205, 19)
         Me.ExtractRButton.Name = "ExtractRButton"
         Me.ExtractRButton.Size = New System.Drawing.Size(58, 17)
-        Me.ExtractRButton.TabIndex = 1
+        Me.ExtractRButton.TabIndex = 2
         Me.ExtractRButton.TabStop = True
         Me.ExtractRButton.Text = "Extract"
         Me.ExtractRButton.UseVisualStyleBackColor = True
@@ -128,14 +130,14 @@ Partial Class Form1
         Me.cmixVersionDropdown.Location = New System.Drawing.Point(12, 164)
         Me.cmixVersionDropdown.Name = "cmixVersionDropdown"
         Me.cmixVersionDropdown.Size = New System.Drawing.Size(121, 21)
-        Me.cmixVersionDropdown.TabIndex = 6
+        Me.cmixVersionDropdown.TabIndex = 8
         '
         'BrowseButton1
         '
         Me.BrowseButton1.Location = New System.Drawing.Point(255, 84)
         Me.BrowseButton1.Name = "BrowseButton1"
         Me.BrowseButton1.Size = New System.Drawing.Size(75, 23)
-        Me.BrowseButton1.TabIndex = 7
+        Me.BrowseButton1.TabIndex = 4
         Me.BrowseButton1.Text = "Browse File"
         Me.BrowseButton1.UseVisualStyleBackColor = True
         '
@@ -144,7 +146,7 @@ Partial Class Form1
         Me.BrowseButton2.Location = New System.Drawing.Point(255, 123)
         Me.BrowseButton2.Name = "BrowseButton2"
         Me.BrowseButton2.Size = New System.Drawing.Size(75, 23)
-        Me.BrowseButton2.TabIndex = 8
+        Me.BrowseButton2.TabIndex = 7
         Me.BrowseButton2.Text = "Browse"
         Me.BrowseButton2.UseVisualStyleBackColor = True
         '
@@ -154,7 +156,7 @@ Partial Class Form1
         Me.StartButton.Location = New System.Drawing.Point(166, 152)
         Me.StartButton.Name = "StartButton"
         Me.StartButton.Size = New System.Drawing.Size(263, 57)
-        Me.StartButton.TabIndex = 9
+        Me.StartButton.TabIndex = 10
         Me.StartButton.Text = "Start"
         Me.StartButton.UseVisualStyleBackColor = True
         '
@@ -195,7 +197,7 @@ Partial Class Form1
         Me.LinkLabel1.Location = New System.Drawing.Point(114, 247)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(174, 13)
-        Me.LinkLabel1.TabIndex = 13
+        Me.LinkLabel1.TabIndex = 11
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "https://github.com/byronknoll/cmix"
         '
@@ -204,16 +206,16 @@ Partial Class Form1
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(375, 247)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(50, 13)
+        Me.Label5.Size = New System.Drawing.Size(59, 13)
         Me.Label5.TabIndex = 14
-        Me.Label5.Text = "GUI v1.0"
+        Me.Label5.Text = "GUI v1.0r2"
         '
         'BrowseFolder
         '
         Me.BrowseFolder.Location = New System.Drawing.Point(336, 84)
         Me.BrowseFolder.Name = "BrowseFolder"
         Me.BrowseFolder.Size = New System.Drawing.Size(89, 23)
-        Me.BrowseFolder.TabIndex = 15
+        Me.BrowseFolder.TabIndex = 5
         Me.BrowseFolder.Text = "Browse Folder"
         Me.BrowseFolder.UseVisualStyleBackColor = True
         '
@@ -223,9 +225,20 @@ Partial Class Form1
         Me.UseEngDictCheckbox.Location = New System.Drawing.Point(12, 192)
         Me.UseEngDictCheckbox.Name = "UseEngDictCheckbox"
         Me.UseEngDictCheckbox.Size = New System.Drawing.Size(148, 17)
-        Me.UseEngDictCheckbox.TabIndex = 16
+        Me.UseEngDictCheckbox.TabIndex = 9
         Me.UseEngDictCheckbox.Text = "Use the English dictionary"
         Me.UseEngDictCheckbox.UseVisualStyleBackColor = True
+        '
+        'PreprocessRButton
+        '
+        Me.PreprocessRButton.AutoSize = True
+        Me.PreprocessRButton.Location = New System.Drawing.Point(83, 19)
+        Me.PreprocessRButton.Name = "PreprocessRButton"
+        Me.PreprocessRButton.Size = New System.Drawing.Size(116, 17)
+        Me.PreprocessRButton.TabIndex = 1
+        Me.PreprocessRButton.TabStop = True
+        Me.PreprocessRButton.Text = "Only Preprocessing"
+        Me.PreprocessRButton.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -283,4 +296,5 @@ Partial Class Form1
     Friend WithEvents BrowseFolder As Button
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
     Friend WithEvents UseEngDictCheckbox As CheckBox
+    Friend WithEvents PreprocessRButton As RadioButton
 End Class

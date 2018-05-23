@@ -121,7 +121,7 @@
     <value>Compressed files will be saved at the input folder</value>
   </data>
   <data name="CompressInputMessage" xml:space="preserve">
-    <value>Step 1: Browse for a file to compress:</value>
+    <value>Step 1: Browse for a file or folder to compress:</value>
   </data>
   <data name="CompressOutputMessage" xml:space="preserve">
     <value>Step 2: Browse for a location to save the compressed file:</value>
@@ -131,5 +131,14 @@
   </data>
   <data name="ExtractOutputMessage" xml:space="preserve">
     <value>Step 2: Browse for a location to save the extracted file:</value>
+  </data>
+  <data name="PreprocessFolderSelectedMessage" xml:space="preserve">
+    <value>Preprocessed files will be saved at the input folder</value>
+  </data>
+  <data name="PreprocessInputMessage" xml:space="preserve">
+    <value>Step 1: Browse for a file or folder to preprocess:</value>
+  </data>
+  <data name="PreprocessOutputMessage" xml:space="preserve">
+    <value>Step 2: Browse for a location to save the preprocessed file:</value>
   </data>
 </root>
