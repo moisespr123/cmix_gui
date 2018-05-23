@@ -208,7 +208,7 @@ Partial Class Form1
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(59, 13)
         Me.Label5.TabIndex = 14
-        Me.Label5.Text = "GUI v1.0r2"
+        Me.Label5.Text = "GUI v1.0r3"
         '
         'BrowseFolder
         '

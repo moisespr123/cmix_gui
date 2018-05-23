@@ -5,7 +5,6 @@
     Private Sub CompressRButton_CheckedChanged(sender As Object, e As EventArgs) Handles CompressRButton.CheckedChanged
         InputFileMessage.Text = My.Resources.CompressInputMessage
         OutputFileMessage.Text = My.Resources.CompressOutputMessage
-        BrowseFolder.Enabled = True
         UseEngDictCheckbox.Enabled = True
         My.Settings.Compress = CompressRButton.Checked
         My.Settings.Save()
@@ -15,17 +14,16 @@
     Private Sub ExtractRButton_CheckedChanged(sender As Object, e As EventArgs) Handles ExtractRButton.CheckedChanged
         InputFileMessage.Text = My.Resources.ExtractInputMessage
         OutputFileMessage.Text = My.Resources.ExtractOutputMessage
-        BrowseFolder.Enabled = False
         UseEngDictCheckbox.Enabled = True
         My.Settings.Extract = ExtractRButton.Checked
         My.Settings.Save()
+        If InputFileTxt.Text IsNot String.Empty Then GetInputNameAndUpdateForm(InputFileTxt.Text)
     End Sub
 
 
     Private Sub PreprocessRButton_CheckedChanged(sender As Object, e As EventArgs) Handles PreprocessRButton.CheckedChanged
         InputFileMessage.Text = My.Resources.PreprocessInputMessage
         OutputFileMessage.Text = My.Resources.PreprocessOutputMessage
-        BrowseFolder.Enabled = True
         My.Settings.Preprocess = PreprocessRButton.Checked
         My.Settings.Save()
         UseEngDictCheckbox.Checked = True
@@ -35,7 +33,13 @@
 
     Private Function CheckIfFileOrFolder(PathToCheck As String) As String
         If My.Computer.FileSystem.FileExists(PathToCheck) Then
-            If CompressRButton.Checked Then OutputFileMessage.Text = My.Resources.CompressOutputMessage
+            If CompressRButton.Checked Then
+                OutputFileMessage.Text = My.Resources.CompressOutputMessage
+            ElseIf PreprocessRButton.Checked Then
+                OutputFileMessage.Text = My.Resources.PreprocessOutputMessage
+            ElseIf ExtractRButton.checked Then
+                OutputFileMessage.Text = My.Resources.ExtractOutputMessage
+            End If
             OutputFileTxt.Enabled = True
             BrowseButton2.Enabled = True
             Return "File"
@@ -44,6 +48,8 @@
                 OutputFileMessage.Text = My.Resources.CompressFolderSelectedMessage
             ElseIf PreprocessRButton.Checked Then
                 OutputFileMessage.Text = My.Resources.PreprocessFolderSelectedMessage
+            ElseIf ExtractRButton.Checked Then
+                OutputFileMessage.Text = My.Resources.ExtractFolderSelectedMessage
             End If
             OutputFileTxt.Enabled = False
             BrowseButton2.Enabled = False
@@ -164,7 +170,14 @@
 
     Public Sub ProcessFiles(Folder As String, Action As String)
         For Each File In IO.Directory.GetFiles(Folder)
-            Run_cmix(File, File + ".cmix" + cmix_version + dict, Action)
+            If ExtractRButton.Checked Then
+                If IO.Path.GetExtension(File).Contains("cmix") Then
+                    GetInputNameAndUpdateForm(File)
+                    Run_cmix(File, OutputFileTxt.Text, Action)
+                End If
+            Else
+                Run_cmix(File, File + ".cmix" + cmix_version + dict, Action)
+            End If
         Next
     End Sub
 

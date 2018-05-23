@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("cmix_gui")>
-<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyDescription("A GUI for the cmix compression software")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("cmix_gui")>
 <Assembly: AssemblyCopyright("Copyright ©  2018")>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("1.0.3.0")>
+<Assembly: AssemblyFileVersion("1.0.3.0")>

@@ -126,6 +126,9 @@
   <data name="CompressOutputMessage" xml:space="preserve">
     <value>Step 2: Browse for a location to save the compressed file:</value>
   </data>
+  <data name="ExtractFolderSelectedMessage" xml:space="preserve">
+    <value>Extracted files will be saved at the input folder</value>
+  </data>
   <data name="ExtractInputMessage" xml:space="preserve">
     <value>Step 1: Browse for a compressed file to extract:</value>
   </data>

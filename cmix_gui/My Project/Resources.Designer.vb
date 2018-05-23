@@ -88,6 +88,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Extracted files will be saved at the input folder.
+        '''</summary>
+        Friend ReadOnly Property ExtractFolderSelectedMessage() As String
+            Get
+                Return ResourceManager.GetString("ExtractFolderSelectedMessage", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Step 1: Browse for a compressed file to extract:.
         '''</summary>
         Friend ReadOnly Property ExtractInputMessage() As String
