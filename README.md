@@ -10,6 +10,10 @@ Released under the GPL license. Feel free to tweak with this GUI!
 
 Software written with Visual Studio 2017 in the Visual Basic .NET language
 
+# Screenshot
+
+![GUI Screenshot](https://ipfs.steem.place/ipfs/QmVYySt59TDGd8rRcaJZBNHNA5BB7Xjw9poH4m3AhK54mT)
+
 --------------------
 
 cmix repo: https://github.com/byronknoll/cmix
