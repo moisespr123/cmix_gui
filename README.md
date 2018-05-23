@@ -1,8 +1,8 @@
 # cmix_gui
 
-cmix GUI is a Front-end for the [cmix compression program](https://github.com/byronknoll/cmix). It allows you to compress and extract files.
+cmix GUI is a Front-end for the [cmix compression program](https://github.com/byronknoll/cmix). It allows you to compress, preprocess and extract files.
 
-When compressing files, the GUI will append the version used and will append a `_dict` at the end if you used the dictionary feature.
+When compressing files, the GUI will append the version used and will append a `_dict` at the end if you used the dictionary feature. When preprocessing files, they will always end with the `_dict` added at the end of the extension.
 
 When extracting a file, it will check the file extension and adjust version and dictionary feature accordingly.
 
