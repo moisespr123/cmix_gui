@@ -117,31 +117,142 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About1" xml:space="preserve">
+    <value>GUI software by: Moisés Cardona</value>
+  </data>
+  <data name="About1Spanish" xml:space="preserve">
+    <value>programa GUI por: Moisés Cardona</value>
+  </data>
+  <data name="About2" xml:space="preserve">
+    <value>cmix by: Byron Knoll</value>
+  </data>
+  <data name="About2Spanish" xml:space="preserve">
+    <value>cmix por: Byron Knoll</value>
+  </data>
+  <data name="ActionGroupBox" xml:space="preserve">
+    <value>I want to...</value>
+  </data>
+  <data name="ActionGroupBoxSpanish" xml:space="preserve">
+    <value>Quiero...</value>
+  </data>
+  <data name="BrowseFileButton" xml:space="preserve">
+    <value>Browse File</value>
+  </data>
+  <data name="BrowseFileButtonSpanish" xml:space="preserve">
+    <value>Buscar Archivo</value>
+  </data>
+  <data name="BrowseFolderButton" xml:space="preserve">
+    <value>Browse Folder</value>
+  </data>
+  <data name="BrowseFolderButtonSpanish" xml:space="preserve">
+    <value>Buscar Carpeta</value>
+  </data>
+  <data name="BrowseOutputButton" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="BrowseOutputButtonSpanish" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="cmixVersionToUseLabel" xml:space="preserve">
+    <value>cmix version to use:</value>
+  </data>
+  <data name="cmixVersionToUseLabelSpanish" xml:space="preserve">
+    <value>Versión de cmix a usar:</value>
+  </data>
   <data name="CompressFolderSelectedMessage" xml:space="preserve">
     <value>Compressed files will be saved at the input folder</value>
+  </data>
+  <data name="CompressFolderSelectedMessageSpanish" xml:space="preserve">
+    <value>Archivos comprimidos serán guardados en su carpeta original</value>
   </data>
   <data name="CompressInputMessage" xml:space="preserve">
     <value>Step 1: Browse for a file or folder to compress:</value>
   </data>
+  <data name="CompressInputMessageSpanish" xml:space="preserve">
+    <value>Paso 1: Busque un archivo o carpeta para comprimir:</value>
+  </data>
   <data name="CompressOutputMessage" xml:space="preserve">
     <value>Step 2: Browse for a location to save the compressed file:</value>
+  </data>
+  <data name="CompressOutputMessageSpanish" xml:space="preserve">
+    <value>Paso 2: Busque un lugar para guardar el archivo comprimido:</value>
+  </data>
+  <data name="CompressRButton" xml:space="preserve">
+    <value>Compress</value>
+  </data>
+  <data name="CompressRButtonSpanish" xml:space="preserve">
+    <value>Comprimir</value>
   </data>
   <data name="ExtractFolderSelectedMessage" xml:space="preserve">
     <value>Extracted files will be saved at the input folder</value>
   </data>
+  <data name="ExtractFolderSelectedMessageSpanish" xml:space="preserve">
+    <value>Archivos descomprimidos serán guardados en su carpeta original</value>
+  </data>
   <data name="ExtractInputMessage" xml:space="preserve">
     <value>Step 1: Browse for a compressed file to extract:</value>
+  </data>
+  <data name="ExtractInputMessageSpanish" xml:space="preserve">
+    <value>Paso 1: Busque un archivo o carpeta para descomprimir:</value>
   </data>
   <data name="ExtractOutputMessage" xml:space="preserve">
     <value>Step 2: Browse for a location to save the extracted file:</value>
   </data>
+  <data name="ExtractOutputMessageSpanish" xml:space="preserve">
+    <value>Paso 2: Busque un lugar para guardar el archivo descomprimido:</value>
+  </data>
+  <data name="ExtractRButton" xml:space="preserve">
+    <value>Extract</value>
+  </data>
+  <data name="ExtractRButtonSpanish" xml:space="preserve">
+    <value>Extraer</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Finished!</value>
+  </data>
+  <data name="FinishedSpanish" xml:space="preserve">
+    <value>¡Finalizado!</value>
+  </data>
+  <data name="FormName" xml:space="preserve">
+    <value>cmix Graphical User Interface</value>
+  </data>
+  <data name="FormNameSpanish" xml:space="preserve">
+    <value>Interfáz Gráfica para cmix</value>
+  </data>
   <data name="PreprocessFolderSelectedMessage" xml:space="preserve">
     <value>Preprocessed files will be saved at the input folder</value>
+  </data>
+  <data name="PreprocessFolderSelectedMessageSpanish" xml:space="preserve">
+    <value>Archivos preprocesados serán guardados en su carpeta original</value>
   </data>
   <data name="PreprocessInputMessage" xml:space="preserve">
     <value>Step 1: Browse for a file or folder to preprocess:</value>
   </data>
+  <data name="PreprocessInputMessageSpanish" xml:space="preserve">
+    <value>Paso 1: Busque un archivo o carpeta para preprocesar:</value>
+  </data>
   <data name="PreprocessOutputMessage" xml:space="preserve">
     <value>Step 2: Browse for a location to save the preprocessed file:</value>
+  </data>
+  <data name="PreprocessOutputMessageSpanish" xml:space="preserve">
+    <value>Paso 2: Busque un lugar para guardar el archivo preprocesado:</value>
+  </data>
+  <data name="PreprocessRButton" xml:space="preserve">
+    <value>Only Preprocessing</value>
+  </data>
+  <data name="PreprocessRButtonSpanish" xml:space="preserve">
+    <value>Solo Preprocesar</value>
+  </data>
+  <data name="StartButton" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="StartButtonSpanish" xml:space="preserve">
+    <value>Comenzar</value>
+  </data>
+  <data name="UseDict" xml:space="preserve">
+    <value>Use the English dictionary</value>
+  </data>
+  <data name="UseDictSpanish" xml:space="preserve">
+    <value>Usar el diccionario Inglés</value>
   </data>
 </root>

@@ -2,9 +2,120 @@
     Private OutputFileName As String = String.Empty
     Private cmix_version As String = String.Empty
     Private dict As String = String.Empty
+
+    'variables that holds localization messages:
+    Private AboutString1 As String = My.Resources.About1
+    Private AboutString2 As String = My.Resources.About2
+    Private ActionGroupBoxString As String = My.Resources.ActionGroupBox
+    Private BrowseFileButton As String = My.Resources.BrowseFileButton
+    Private BrowseFolderButton As String = My.Resources.BrowseFolderButton
+    Private BrowseOutputButton As String = My.Resources.BrowseOutputButton
+    Private cmixVersionToUseLabelString As String = My.Resources.cmixVersionToUseLabel
+    Private CompressFolderSelectedMessage As String = My.Resources.CompressFolderSelectedMessage
+    Private CompressInputMessage As String = My.Resources.CompressInputMessage
+    Private CompressOutputMessage As String = My.Resources.CompressOutputMessage
+    Private CompressRButtonString As String = My.Resources.CompressRButton
+    Private ExtractFolderSelectedMessage As String = My.Resources.ExtractFolderSelectedMessage
+    Private ExtractInputMessage As String = My.Resources.ExtractInputMessage
+    Private ExtractOutputMessage As String = My.Resources.ExtractOutputMessage
+    Private ExtractRButtonString As String = My.Resources.ExtractRButton
+    Private PreprocessFolderSelectedMessage As String = My.Resources.PreprocessFolderSelectedMessage
+    Private PreprocessInputMessage As String = My.Resources.PreprocessInputMessage
+    Private PreprocessOutputMessage As String = My.Resources.PreprocessOutputMessage
+    Private PreprocessRButtonString As String = My.Resources.PreprocessRButton
+    Private StartButtonString As String = My.Resources.StartButton
+    Private UseDictString As String = My.Resources.UseDict
+    Private Finished As String = My.Resources.Finished
+    Private FormName As String = My.Resources.FormName
+
+    Private Sub UpdateElementsInForm()
+        If InputFileTxt.Text IsNot String.Empty Then GetInputNameAndUpdateForm(InputFileTxt.Text)
+        If CompressRButton.Checked Then
+            InputFileMessage.Text = CompressInputMessage
+        ElseIf PreprocessRButton.Checked Then
+            InputFileMessage.Text = PreprocessInputMessage
+        ElseIf ExtractRButton.Checked Then
+            InputFileMessage.Text = ExtractInputMessage
+        End If
+        AboutLabel1.Text = AboutString1
+        AboutLabel2.Text = AboutString2
+        ActionGroupBox.Text = ActionGroupBoxString
+        BrowseButton1.Text = BrowseFileButton
+        BrowseFolder.Text = BrowseFolderButton
+        BrowseButton2.Text = BrowseOutputButton
+        cmixVersionToUseLabel.Text = cmixVersionToUseLabelString
+        CompressRButton.Text = CompressRButtonString
+        PreprocessRButton.Text = PreprocessRButtonString
+        ExtractRButton.Text = ExtractRButtonString
+        StartButton.Text = StartButtonString
+        UseEngDictCheckbox.Text = UseDictString
+        Me.Text = FormName
+    End Sub
+    Private Sub UpdateMessageStrings(Language As String)
+        If Language = "English" Then
+            AboutString1 = My.Resources.About1
+            AboutString2 = My.Resources.About2
+            ActionGroupBoxString = My.Resources.ActionGroupBox
+            BrowseFileButton = My.Resources.BrowseFileButton
+            BrowseFolderButton = My.Resources.BrowseFolderButton
+            BrowseOutputButton = My.Resources.BrowseOutputButton
+            cmixVersionToUseLabelString = My.Resources.cmixVersionToUseLabel
+            CompressFolderSelectedMessage = My.Resources.CompressFolderSelectedMessage
+            CompressInputMessage = My.Resources.CompressInputMessage
+            CompressOutputMessage = My.Resources.CompressOutputMessage
+            CompressRButtonString = My.Resources.CompressRButton
+            ExtractFolderSelectedMessage = My.Resources.ExtractFolderSelectedMessage
+            ExtractInputMessage = My.Resources.ExtractInputMessage
+            ExtractOutputMessage = My.Resources.ExtractOutputMessage
+            ExtractRButtonString = My.Resources.ExtractRButton
+            PreprocessFolderSelectedMessage = My.Resources.PreprocessFolderSelectedMessage
+            PreprocessInputMessage = My.Resources.PreprocessInputMessage
+            PreprocessOutputMessage = My.Resources.PreprocessOutputMessage
+            PreprocessRButtonString = My.Resources.PreprocessRButton
+            StartButtonString = My.Resources.StartButton
+            UseDictString = My.Resources.UseDict
+            Finished = My.Resources.Finished
+            FormName = My.Resources.FormName
+        Else
+            AboutString1 = My.Resources.About1Spanish
+            AboutString2 = My.Resources.About2Spanish
+            ActionGroupBoxString = My.Resources.ActionGroupBoxSpanish
+            BrowseFileButton = My.Resources.BrowseFileButtonSpanish
+            BrowseFolderButton = My.Resources.BrowseFolderButtonSpanish
+            BrowseOutputButton = My.Resources.BrowseOutputButtonSpanish
+            cmixVersionToUseLabelString = My.Resources.cmixVersionToUseLabelSpanish
+            CompressFolderSelectedMessage = My.Resources.CompressFolderSelectedMessageSpanish
+            CompressInputMessage = My.Resources.CompressInputMessageSpanish
+            CompressOutputMessage = My.Resources.CompressOutputMessageSpanish
+            CompressRButtonString = My.Resources.CompressRButtonSpanish
+            ExtractFolderSelectedMessage = My.Resources.ExtractFolderSelectedMessageSpanish
+            ExtractInputMessage = My.Resources.ExtractInputMessageSpanish
+            ExtractOutputMessage = My.Resources.ExtractOutputMessageSpanish
+            ExtractRButtonString = My.Resources.ExtractRButtonSpanish
+            PreprocessFolderSelectedMessage = My.Resources.PreprocessFolderSelectedMessageSpanish
+            PreprocessInputMessage = My.Resources.PreprocessInputMessageSpanish
+            PreprocessOutputMessage = My.Resources.PreprocessOutputMessageSpanish
+            PreprocessRButtonString = My.Resources.PreprocessRButtonSpanish
+            StartButtonString = My.Resources.StartButtonSpanish
+            UseDictString = My.Resources.UseDictSpanish
+            Finished = My.Resources.FinishedSpanish
+            FormName = My.Resources.FormNameSpanish
+        End If
+        UpdateElementsInForm()
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CompressRButton.Checked = My.Settings.Compress
+        ExtractRButton.Checked = My.Settings.Extract
+        PreprocessRButton.Checked = My.Settings.Preprocess
+        cmixVersionDropdown.SelectedItem = My.Settings.Version
+        UseEngDictCheckbox.Checked = My.Settings.UseEngDict
+        EnglishRButton.Checked = My.Settings.EnglishLanguage
+        SpanishRButton.Checked = My.Settings.SpanishLanguage
+    End Sub
     Private Sub CompressRButton_CheckedChanged(sender As Object, e As EventArgs) Handles CompressRButton.CheckedChanged
-        InputFileMessage.Text = My.Resources.CompressInputMessage
-        OutputFileMessage.Text = My.Resources.CompressOutputMessage
+        InputFileMessage.Text = CompressInputMessage
+        OutputFileMessage.Text = CompressOutputMessage
         UseEngDictCheckbox.Enabled = True
         My.Settings.Compress = CompressRButton.Checked
         My.Settings.Save()
@@ -12,8 +123,8 @@
     End Sub
 
     Private Sub ExtractRButton_CheckedChanged(sender As Object, e As EventArgs) Handles ExtractRButton.CheckedChanged
-        InputFileMessage.Text = My.Resources.ExtractInputMessage
-        OutputFileMessage.Text = My.Resources.ExtractOutputMessage
+        InputFileMessage.Text = ExtractInputMessage
+        OutputFileMessage.Text = ExtractOutputMessage
         UseEngDictCheckbox.Enabled = True
         My.Settings.Extract = ExtractRButton.Checked
         My.Settings.Save()
@@ -22,8 +133,8 @@
 
 
     Private Sub PreprocessRButton_CheckedChanged(sender As Object, e As EventArgs) Handles PreprocessRButton.CheckedChanged
-        InputFileMessage.Text = My.Resources.PreprocessInputMessage
-        OutputFileMessage.Text = My.Resources.PreprocessOutputMessage
+        InputFileMessage.Text = PreprocessInputMessage
+        OutputFileMessage.Text = PreprocessOutputMessage
         My.Settings.Preprocess = PreprocessRButton.Checked
         My.Settings.Save()
         UseEngDictCheckbox.Checked = True
@@ -34,22 +145,22 @@
     Private Function CheckIfFileOrFolder(PathToCheck As String) As String
         If My.Computer.FileSystem.FileExists(PathToCheck) Then
             If CompressRButton.Checked Then
-                OutputFileMessage.Text = My.Resources.CompressOutputMessage
+                OutputFileMessage.Text = CompressOutputMessage
             ElseIf PreprocessRButton.Checked Then
-                OutputFileMessage.Text = My.Resources.PreprocessOutputMessage
+                OutputFileMessage.Text = PreprocessOutputMessage
             ElseIf ExtractRButton.checked Then
-                OutputFileMessage.Text = My.Resources.ExtractOutputMessage
+                OutputFileMessage.Text = ExtractOutputMessage
             End If
             OutputFileTxt.Enabled = True
             BrowseButton2.Enabled = True
             Return "File"
         ElseIf My.Computer.FileSystem.DirectoryExists(PathToCheck) Then
             If CompressRButton.Checked Then
-                OutputFileMessage.Text = My.Resources.CompressFolderSelectedMessage
+                OutputFileMessage.Text = CompressFolderSelectedMessage
             ElseIf PreprocessRButton.Checked Then
-                OutputFileMessage.Text = My.Resources.PreprocessFolderSelectedMessage
+                OutputFileMessage.Text = PreprocessFolderSelectedMessage
             ElseIf ExtractRButton.Checked Then
-                OutputFileMessage.Text = My.Resources.ExtractFolderSelectedMessage
+                OutputFileMessage.Text = ExtractFolderSelectedMessage
             End If
             OutputFileTxt.Enabled = False
             BrowseButton2.Enabled = False
@@ -150,14 +261,6 @@
         GetInputNameAndUpdateForm(InputFileTxt.Text)
     End Sub
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CompressRButton.Checked = My.Settings.Compress
-        ExtractRButton.Checked = My.Settings.Extract
-        PreprocessRButton.Checked = My.Settings.Preprocess
-        cmixVersionDropdown.SelectedItem = My.Settings.Version
-        UseEngDictCheckbox.Checked = My.Settings.UseEngDict
-    End Sub
-
     Private Sub Run_cmix(Input As String, Output As String, action As String)
         Dim cmixProcessInfo As New ProcessStartInfo
         Dim cmixProcess As Process
@@ -211,8 +314,8 @@
             ElseIf CheckInput = "Folder" Then
                 ProcessFolder(InputFileTxt.Text, ProcessAction)
                 End If
-                MessageBox.Show("Finished!")
-            End If
+            MessageBox.Show(Finished)
+        End If
     End Sub
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
@@ -228,4 +331,15 @@
         End If
     End Sub
 
+    Private Sub EnglishRButton_CheckedChanged(sender As Object, e As EventArgs) Handles EnglishRButton.CheckedChanged
+        My.Settings.EnglishLanguage = EnglishRButton.Checked
+        My.Settings.Save()
+        UpdateMessageStrings("English")
+    End Sub
+
+    Private Sub SpanishRButton_CheckedChanged(sender As Object, e As EventArgs) Handles SpanishRButton.CheckedChanged
+        My.Settings.SpanishLanguage = SpanishRButton.Checked
+        My.Settings.Save()
+        UpdateMessageStrings("Spanish")
+    End Sub
 End Class

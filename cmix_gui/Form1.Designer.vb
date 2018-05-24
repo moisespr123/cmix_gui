@@ -26,26 +26,30 @@ Partial Class Form1
         Me.InputFileTxt = New System.Windows.Forms.TextBox()
         Me.OutputFileMessage = New System.Windows.Forms.Label()
         Me.OutputFileTxt = New System.Windows.Forms.TextBox()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ActionGroupBox = New System.Windows.Forms.GroupBox()
+        Me.PreprocessRButton = New System.Windows.Forms.RadioButton()
         Me.ExtractRButton = New System.Windows.Forms.RadioButton()
         Me.CompressRButton = New System.Windows.Forms.RadioButton()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.cmixVersionToUseLabel = New System.Windows.Forms.Label()
         Me.cmixVersionDropdown = New System.Windows.Forms.ComboBox()
         Me.BrowseButton1 = New System.Windows.Forms.Button()
         Me.BrowseButton2 = New System.Windows.Forms.Button()
         Me.StartButton = New System.Windows.Forms.Button()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.AboutLabel1 = New System.Windows.Forms.Label()
+        Me.AboutLabel2 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.VersionLabel = New System.Windows.Forms.Label()
         Me.BrowseFolder = New System.Windows.Forms.Button()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.UseEngDictCheckbox = New System.Windows.Forms.CheckBox()
-        Me.PreprocessRButton = New System.Windows.Forms.RadioButton()
-        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.SpanishRButton = New System.Windows.Forms.RadioButton()
+        Me.EnglishRButton = New System.Windows.Forms.RadioButton()
+        Me.ActionGroupBox.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'InputFileMessage
@@ -80,17 +84,28 @@ Partial Class Form1
         Me.OutputFileTxt.Size = New System.Drawing.Size(237, 20)
         Me.OutputFileTxt.TabIndex = 6
         '
-        'GroupBox1
+        'ActionGroupBox
         '
-        Me.GroupBox1.Controls.Add(Me.PreprocessRButton)
-        Me.GroupBox1.Controls.Add(Me.ExtractRButton)
-        Me.GroupBox1.Controls.Add(Me.CompressRButton)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(276, 46)
-        Me.GroupBox1.TabIndex = 4
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "I want to:"
+        Me.ActionGroupBox.Controls.Add(Me.PreprocessRButton)
+        Me.ActionGroupBox.Controls.Add(Me.ExtractRButton)
+        Me.ActionGroupBox.Controls.Add(Me.CompressRButton)
+        Me.ActionGroupBox.Location = New System.Drawing.Point(12, 12)
+        Me.ActionGroupBox.Name = "ActionGroupBox"
+        Me.ActionGroupBox.Size = New System.Drawing.Size(276, 46)
+        Me.ActionGroupBox.TabIndex = 4
+        Me.ActionGroupBox.TabStop = False
+        Me.ActionGroupBox.Text = "I want to:"
+        '
+        'PreprocessRButton
+        '
+        Me.PreprocessRButton.AutoSize = True
+        Me.PreprocessRButton.Location = New System.Drawing.Point(83, 19)
+        Me.PreprocessRButton.Name = "PreprocessRButton"
+        Me.PreprocessRButton.Size = New System.Drawing.Size(116, 17)
+        Me.PreprocessRButton.TabIndex = 1
+        Me.PreprocessRButton.TabStop = True
+        Me.PreprocessRButton.Text = "Only Preprocessing"
+        Me.PreprocessRButton.UseVisualStyleBackColor = True
         '
         'ExtractRButton
         '
@@ -114,14 +129,14 @@ Partial Class Form1
         Me.CompressRButton.Text = "Compress"
         Me.CompressRButton.UseVisualStyleBackColor = True
         '
-        'Label3
+        'cmixVersionToUseLabel
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(9, 148)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(100, 13)
-        Me.Label3.TabIndex = 5
-        Me.Label3.Text = "cmix version to use:"
+        Me.cmixVersionToUseLabel.AutoSize = True
+        Me.cmixVersionToUseLabel.Location = New System.Drawing.Point(9, 148)
+        Me.cmixVersionToUseLabel.Name = "cmixVersionToUseLabel"
+        Me.cmixVersionToUseLabel.Size = New System.Drawing.Size(100, 13)
+        Me.cmixVersionToUseLabel.TabIndex = 5
+        Me.cmixVersionToUseLabel.Text = "cmix version to use:"
         '
         'cmixVersionDropdown
         '
@@ -136,7 +151,7 @@ Partial Class Form1
         '
         Me.BrowseButton1.Location = New System.Drawing.Point(255, 84)
         Me.BrowseButton1.Name = "BrowseButton1"
-        Me.BrowseButton1.Size = New System.Drawing.Size(75, 23)
+        Me.BrowseButton1.Size = New System.Drawing.Size(96, 23)
         Me.BrowseButton1.TabIndex = 4
         Me.BrowseButton1.Text = "Browse File"
         Me.BrowseButton1.UseVisualStyleBackColor = True
@@ -145,7 +160,7 @@ Partial Class Form1
         '
         Me.BrowseButton2.Location = New System.Drawing.Point(255, 123)
         Me.BrowseButton2.Name = "BrowseButton2"
-        Me.BrowseButton2.Size = New System.Drawing.Size(75, 23)
+        Me.BrowseButton2.Size = New System.Drawing.Size(96, 23)
         Me.BrowseButton2.TabIndex = 7
         Me.BrowseButton2.Text = "Browse"
         Me.BrowseButton2.UseVisualStyleBackColor = True
@@ -153,7 +168,7 @@ Partial Class Form1
         'StartButton
         '
         Me.StartButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.StartButton.Location = New System.Drawing.Point(166, 152)
+        Me.StartButton.Location = New System.Drawing.Point(183, 151)
         Me.StartButton.Name = "StartButton"
         Me.StartButton.Size = New System.Drawing.Size(263, 57)
         Me.StartButton.TabIndex = 10
@@ -164,28 +179,28 @@ Partial Class Form1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'Label1
+        'AboutLabel1
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 221)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(165, 13)
-        Me.Label1.TabIndex = 10
-        Me.Label1.Text = "GUI software by: Moisés Cardona"
+        Me.AboutLabel1.AutoSize = True
+        Me.AboutLabel1.Location = New System.Drawing.Point(9, 225)
+        Me.AboutLabel1.Name = "AboutLabel1"
+        Me.AboutLabel1.Size = New System.Drawing.Size(165, 13)
+        Me.AboutLabel1.TabIndex = 10
+        Me.AboutLabel1.Text = "GUI software by: Moisés Cardona"
         '
-        'Label2
+        'AboutLabel2
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 234)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(101, 13)
-        Me.Label2.TabIndex = 11
-        Me.Label2.Text = "cmix by: Byron Knoll"
+        Me.AboutLabel2.AutoSize = True
+        Me.AboutLabel2.Location = New System.Drawing.Point(9, 238)
+        Me.AboutLabel2.Name = "AboutLabel2"
+        Me.AboutLabel2.Size = New System.Drawing.Size(101, 13)
+        Me.AboutLabel2.TabIndex = 11
+        Me.AboutLabel2.Text = "cmix by: Byron Knoll"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(12, 247)
+        Me.Label4.Location = New System.Drawing.Point(9, 251)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(96, 13)
         Me.Label4.TabIndex = 12
@@ -194,25 +209,25 @@ Partial Class Form1
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(114, 247)
+        Me.LinkLabel1.Location = New System.Drawing.Point(111, 251)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(174, 13)
         Me.LinkLabel1.TabIndex = 11
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "https://github.com/byronknoll/cmix"
         '
-        'Label5
+        'VersionLabel
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(375, 247)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(59, 13)
-        Me.Label5.TabIndex = 14
-        Me.Label5.Text = "GUI v1.0r3"
+        Me.VersionLabel.AutoSize = True
+        Me.VersionLabel.Location = New System.Drawing.Point(387, 251)
+        Me.VersionLabel.Name = "VersionLabel"
+        Me.VersionLabel.Size = New System.Drawing.Size(59, 13)
+        Me.VersionLabel.TabIndex = 14
+        Me.VersionLabel.Text = "GUI v1.0r4"
         '
         'BrowseFolder
         '
-        Me.BrowseFolder.Location = New System.Drawing.Point(336, 84)
+        Me.BrowseFolder.Location = New System.Drawing.Point(357, 84)
         Me.BrowseFolder.Name = "BrowseFolder"
         Me.BrowseFolder.Size = New System.Drawing.Size(89, 23)
         Me.BrowseFolder.TabIndex = 5
@@ -229,36 +244,59 @@ Partial Class Form1
         Me.UseEngDictCheckbox.Text = "Use the English dictionary"
         Me.UseEngDictCheckbox.UseVisualStyleBackColor = True
         '
-        'PreprocessRButton
+        'GroupBox2
         '
-        Me.PreprocessRButton.AutoSize = True
-        Me.PreprocessRButton.Location = New System.Drawing.Point(83, 19)
-        Me.PreprocessRButton.Name = "PreprocessRButton"
-        Me.PreprocessRButton.Size = New System.Drawing.Size(116, 17)
-        Me.PreprocessRButton.TabIndex = 1
-        Me.PreprocessRButton.TabStop = True
-        Me.PreprocessRButton.Text = "Only Preprocessing"
-        Me.PreprocessRButton.UseVisualStyleBackColor = True
+        Me.GroupBox2.Controls.Add(Me.SpanishRButton)
+        Me.GroupBox2.Controls.Add(Me.EnglishRButton)
+        Me.GroupBox2.Location = New System.Drawing.Point(311, 12)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(135, 46)
+        Me.GroupBox2.TabIndex = 15
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Language / Idioma"
+        '
+        'SpanishRButton
+        '
+        Me.SpanishRButton.AutoSize = True
+        Me.SpanishRButton.Location = New System.Drawing.Point(70, 19)
+        Me.SpanishRButton.Name = "SpanishRButton"
+        Me.SpanishRButton.Size = New System.Drawing.Size(63, 17)
+        Me.SpanishRButton.TabIndex = 4
+        Me.SpanishRButton.TabStop = True
+        Me.SpanishRButton.Text = "Español"
+        Me.SpanishRButton.UseVisualStyleBackColor = True
+        '
+        'EnglishRButton
+        '
+        Me.EnglishRButton.AutoSize = True
+        Me.EnglishRButton.Location = New System.Drawing.Point(6, 19)
+        Me.EnglishRButton.Name = "EnglishRButton"
+        Me.EnglishRButton.Size = New System.Drawing.Size(59, 17)
+        Me.EnglishRButton.TabIndex = 3
+        Me.EnglishRButton.TabStop = True
+        Me.EnglishRButton.Text = "English"
+        Me.EnglishRButton.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(441, 272)
+        Me.ClientSize = New System.Drawing.Size(458, 272)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.UseEngDictCheckbox)
         Me.Controls.Add(Me.BrowseFolder)
-        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.VersionLabel)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.AboutLabel2)
+        Me.Controls.Add(Me.AboutLabel1)
         Me.Controls.Add(Me.StartButton)
         Me.Controls.Add(Me.BrowseButton2)
         Me.Controls.Add(Me.BrowseButton1)
         Me.Controls.Add(Me.cmixVersionDropdown)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.cmixVersionToUseLabel)
+        Me.Controls.Add(Me.ActionGroupBox)
         Me.Controls.Add(Me.OutputFileTxt)
         Me.Controls.Add(Me.OutputFileMessage)
         Me.Controls.Add(Me.InputFileTxt)
@@ -267,8 +305,10 @@ Partial Class Form1
         Me.MinimizeBox = False
         Me.Name = "Form1"
         Me.Text = "cmix Graphical User Interface"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.ActionGroupBox.ResumeLayout(False)
+        Me.ActionGroupBox.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -278,23 +318,26 @@ Partial Class Form1
     Friend WithEvents InputFileTxt As TextBox
     Friend WithEvents OutputFileMessage As Label
     Friend WithEvents OutputFileTxt As TextBox
-    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents ActionGroupBox As GroupBox
     Friend WithEvents ExtractRButton As RadioButton
     Friend WithEvents CompressRButton As RadioButton
-    Friend WithEvents Label3 As Label
+    Friend WithEvents cmixVersionToUseLabel As Label
     Friend WithEvents cmixVersionDropdown As ComboBox
     Friend WithEvents BrowseButton1 As Button
     Friend WithEvents BrowseButton2 As Button
     Friend WithEvents StartButton As Button
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
+    Friend WithEvents AboutLabel1 As Label
+    Friend WithEvents AboutLabel2 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents LinkLabel1 As LinkLabel
-    Friend WithEvents Label5 As Label
+    Friend WithEvents VersionLabel As Label
     Friend WithEvents BrowseFolder As Button
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
     Friend WithEvents UseEngDictCheckbox As CheckBox
     Friend WithEvents PreprocessRButton As RadioButton
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents SpanishRButton As RadioButton
+    Friend WithEvents EnglishRButton As RadioButton
 End Class
