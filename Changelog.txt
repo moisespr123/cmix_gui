@@ -1,3 +1,6 @@
+v1.0r3 (5/23/2018)
+-Added folder extraction to extract cmix files inside the specified folder
+
 v1.0r2 (5/23/2018)
 -Added preprocessing
 
