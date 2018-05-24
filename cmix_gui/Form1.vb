@@ -29,7 +29,7 @@
     Private FormName As String = My.Resources.FormName
 
     Private Sub UpdateElementsInForm()
-        If InputFileTxt.Text IsNot String.Empty Then GetInputNameAndUpdateForm(InputFileTxt.Text)
+        GetInputNameAndUpdateForm(InputFileTxt.Text)
         If CompressRButton.Checked Then
             InputFileMessage.Text = CompressInputMessage
         ElseIf PreprocessRButton.Checked Then
@@ -142,18 +142,18 @@
         If InputFileTxt.Text IsNot String.Empty Then GetInputNameAndUpdateForm(InputFileTxt.Text)
     End Sub
 
-    Private Function CheckIfFileOrFolder(PathToCheck As String) As String
-        If My.Computer.FileSystem.FileExists(PathToCheck) Then
+    Private Function CheckIfFileOrFolder(Optional PathToCheck As String = "") As String
+        If My.Computer.FileSystem.FileExists(PathToCheck) Or PathToCheck = "" Then
             If CompressRButton.Checked Then
                 OutputFileMessage.Text = CompressOutputMessage
             ElseIf PreprocessRButton.Checked Then
                 OutputFileMessage.Text = PreprocessOutputMessage
-            ElseIf ExtractRButton.checked Then
+            ElseIf ExtractRButton.Checked Then
                 OutputFileMessage.Text = ExtractOutputMessage
             End If
             OutputFileTxt.Enabled = True
             BrowseButton2.Enabled = True
-            Return "File"
+            If PathToCheck IsNot "" Then Return "File"
         ElseIf My.Computer.FileSystem.DirectoryExists(PathToCheck) Then
             If CompressRButton.Checked Then
                 OutputFileMessage.Text = CompressFolderSelectedMessage
