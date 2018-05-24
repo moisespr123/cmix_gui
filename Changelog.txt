@@ -1,3 +1,6 @@
+v1.0r4 (5/24/2018)
+-Added Spanish language
+
 v1.0r3 (5/23/2018)
 -Added folder extraction to extract cmix files inside the specified folder
 
