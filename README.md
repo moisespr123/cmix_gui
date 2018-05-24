@@ -12,10 +12,10 @@ Software written with Visual Studio 2017 in the Visual Basic .NET language
 
 # Screenshot
 
-English GUI Screenshot:
+English GUI Screenshot:  
 ![GUI Screenshot](https://ipfs.steem.place/ipfs/QmVpAAt76zmH9Q9hPednQuTF2W3FAunJHAZeSXdWvW1CLQ)
 
-Spanish GUI Screenshot:
+Spanish GUI Screenshot:  
 ![GUI Screenshot](https://ipfs.steem.place/ipfs/QmY2gYRf6EZHDBwLqrSsd1sTHPAMb7wTcM2dTjfrw8KDYq)
 
 # How to use?
