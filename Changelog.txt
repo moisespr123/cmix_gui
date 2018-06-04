@@ -3,6 +3,7 @@ v1.1 (not yet released)
 -Can save log to file
 -GUI will not get locked when a task is running
 -GUI will update the Output file textbox accordingly if a file or folder is manually typed in the Input file/folder textbox
+-Fixed bug that the Output filename would not be updated when using Preprocessing mode
 
 v1.0r4 (5/24/2018)
 -Added Spanish language

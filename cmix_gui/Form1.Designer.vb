@@ -221,8 +221,8 @@ Partial Class Form1
         '
         'VersionLabel
         '
-        Me.VersionLabel.AutoSize = true
-        Me.VersionLabel.Location = New System.Drawing.Point(387, 251)
+        Me.VersionLabel.AutoSize = True
+        Me.VersionLabel.Location = New System.Drawing.Point(396, 251)
         Me.VersionLabel.Name = "VersionLabel"
         Me.VersionLabel.Size = New System.Drawing.Size(50, 13)
         Me.VersionLabel.TabIndex = 14

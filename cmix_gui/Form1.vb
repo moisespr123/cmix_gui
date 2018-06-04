@@ -201,7 +201,7 @@
                 SetOutputFileNamePathWithoutExtension(Path)
                 ExtractRButton.Checked = True
             End If
-            If CompressRButton.Checked Then
+            If CompressRButton.Checked Or PreprocessRButton.Checked Then
                 OutputFileName = Path + ".cmix"
                 SetOutputFilename()
             End If
@@ -250,7 +250,7 @@
     End Sub
 
     Private Sub SetOutputFilename()
-        If CompressRButton.Checked Then OutputFileTxt.Text = OutputFileName + cmix_version + dict
+        If CompressRButton.Checked Or PreprocessRButton.Checked Then OutputFileTxt.Text = OutputFileName + cmix_version + dict
     End Sub
 
     Private Sub cmixVersionDropdown_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmixVersionDropdown.SelectedIndexChanged
