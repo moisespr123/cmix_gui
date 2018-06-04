@@ -1,4 +1,4 @@
-v1.1 (not yet released)
+v1.1 (6/4/2018)
 -Added log to see progress
 -Can save log to file
 -GUI will not get locked when a task is running
