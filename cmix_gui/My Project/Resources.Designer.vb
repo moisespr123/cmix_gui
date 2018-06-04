@@ -367,6 +367,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to The Log has been saved..
+        '''</summary>
+        Friend ReadOnly Property LogSaved() As String
+            Get
+                Return ResourceManager.GetString("LogSaved", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to El log ha sido guardado..
+        '''</summary>
+        Friend ReadOnly Property LogSavedSpanish() As String
+            Get
+                Return ResourceManager.GetString("LogSavedSpanish", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Preprocessed files will be saved at the input folder.
         '''</summary>
         Friend ReadOnly Property PreprocessFolderSelectedMessage() As String
@@ -439,6 +457,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Save Log.
+        '''</summary>
+        Friend ReadOnly Property SaveLogButton() As String
+            Get
+                Return ResourceManager.GetString("SaveLogButton", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Guardar Log.
+        '''</summary>
+        Friend ReadOnly Property SaveLogButtonSpanish() As String
+            Get
+                Return ResourceManager.GetString("SaveLogButtonSpanish", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Start.
         '''</summary>
         Friend ReadOnly Property StartButton() As String
@@ -453,6 +489,24 @@ Namespace My.Resources
         Friend ReadOnly Property StartButtonSpanish() As String
             Get
                 Return ResourceManager.GetString("StartButtonSpanish", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to A task is currently running. Please wait for it to finish.
+        '''</summary>
+        Friend ReadOnly Property TaskRunning() As String
+            Get
+                Return ResourceManager.GetString("TaskRunning", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Una tarea se está ejecutando en estos momentos. Por favor, espere a que termine..
+        '''</summary>
+        Friend ReadOnly Property TaskRunningSpanish() As String
+            Get
+                Return ResourceManager.GetString("TaskRunningSpanish", resourceCulture)
             End Get
         End Property
         

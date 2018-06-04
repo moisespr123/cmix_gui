@@ -255,4 +255,22 @@
   <data name="UseDictSpanish" xml:space="preserve">
     <value>Usar el diccionario Inglés</value>
   </data>
+  <data name="LogSaved" xml:space="preserve">
+    <value>The Log has been saved.</value>
+  </data>
+  <data name="LogSavedSpanish" xml:space="preserve">
+    <value>El log ha sido guardado.</value>
+  </data>
+  <data name="SaveLogButton" xml:space="preserve">
+    <value>Save Log</value>
+  </data>
+  <data name="SaveLogButtonSpanish" xml:space="preserve">
+    <value>Guardar Log</value>
+  </data>
+  <data name="TaskRunning" xml:space="preserve">
+    <value>A task is currently running. Please wait for it to finish</value>
+  </data>
+  <data name="TaskRunningSpanish" xml:space="preserve">
+    <value>Una tarea se está ejecutando en estos momentos. Por favor, espere a que termine.</value>
+  </data>
 </root>
