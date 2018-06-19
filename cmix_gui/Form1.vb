@@ -210,7 +210,7 @@
     End Function
 
     Private Sub BrowseButton1_Click(sender As Object, e As EventArgs) Handles BrowseButton1.Click
-        OpenFileDialog1.Title = InputFileTxt.Text
+        OpenFileDialog1.Title = InputFileMessage.Text
         OpenFileDialog1.Filter = "All files (*.*)|*.*"
         If InputFileTxt.Text IsNot String.Empty Then
             If My.Computer.FileSystem.FileExists(InputFileTxt.Text) Then OpenFileDialog1.FileName = My.Computer.FileSystem.GetName(InputFileTxt.Text) Else OpenFileDialog1.FileName = String.Empty
@@ -231,7 +231,7 @@
     End Sub
 
     Private Sub BrowseButton2_Click(sender As Object, e As EventArgs) Handles BrowseButton2.Click
-        SaveFileDialog1.Title = InputFileTxt.Text
+        SaveFileDialog1.Title = OutputFileMessage.Text
         If CompressRButton.Checked Then SaveFileDialog1.Filter = "cmix file|*.cmix" Else SaveFileDialog1.Filter = "All files (*.*)|*.*"
         If OutputFileTxt.Text IsNot String.Empty Then
             If My.Computer.FileSystem.FileExists(OutputFileTxt.Text) Then SaveFileDialog1.FileName = My.Computer.FileSystem.GetName(OutputFileTxt.Text) Else SaveFileDialog1.FileName = String.Empty
