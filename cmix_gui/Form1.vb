@@ -34,9 +34,9 @@
     Private FormName As String = My.Resources.FormName
     Private TaskRunningString As String = My.Resources.TaskRunning
 
-    Private AvailableRAMString As String = My.Resources.AvailableRAM 
+    Private AvailableRAMString As String = My.Resources.AvailableRAM
     Private UsedRAMString As String = My.Resources.UsedRAM
-    Private TotalRAMString As String = My.Resources.TotalRAM 
+    Private TotalRAMString As String = My.Resources.TotalRAM
 
     Private Sub UpdateElementsInForm()
         GetInputNameAndUpdateForm(InputFileTxt.Text)
@@ -92,9 +92,9 @@
             UseDictString = My.Resources.UseDict
             Finished = My.Resources.Finished
             FormName = My.Resources.FormName
-            AvailableRAMString = My.Resources.AvailableRAM 
-            UsedRAMString = My.Resources.UsedRAM 
-            TotalRAMString = My.Resources.TotalRAM 
+            AvailableRAMString = My.Resources.AvailableRAM
+            UsedRAMString = My.Resources.UsedRAM
+            TotalRAMString = My.Resources.TotalRAM
         Else
             AboutString1 = My.Resources.About1Spanish
             AboutString2 = My.Resources.About2Spanish
@@ -123,7 +123,7 @@
             UseDictString = My.Resources.UseDictSpanish
             Finished = My.Resources.FinishedSpanish
             FormName = My.Resources.FormNameSpanish
-             AvailableRAMString = My.Resources.AvailableRAMSpanish
+            AvailableRAMString = My.Resources.AvailableRAMSpanish
             UsedRAMString = My.Resources.UsedRAMSpanish
             TotalRAMString = My.Resources.TotalRAMSpanish
         End If
