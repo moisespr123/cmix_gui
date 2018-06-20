@@ -273,4 +273,28 @@
   <data name="TaskRunningSpanish" xml:space="preserve">
     <value>Una tarea se está ejecutando en estos momentos. Por favor, espere a que termine.</value>
   </data>
+  <data name="AvailableRAM" xml:space="preserve">
+    <value>Available RAM:</value>
+  </data>
+  <data name="AvailableRAMSpanish" xml:space="preserve">
+    <value>RAM disponible:</value>
+  </data>
+  <data name="ClearLogButton" xml:space="preserve">
+    <value>Clear Log</value>
+  </data>
+  <data name="ClearLogButtonSpanish" xml:space="preserve">
+    <value>Borrar Log</value>
+  </data>
+  <data name="TotalRAM" xml:space="preserve">
+    <value>Total RAM:</value>
+  </data>
+  <data name="TotalRAMSpanish" xml:space="preserve">
+    <value>RAM total:</value>
+  </data>
+  <data name="UsedRAM" xml:space="preserve">
+    <value>Used RAM:</value>
+  </data>
+  <data name="UsedRAMSpanish" xml:space="preserve">
+    <value>RAM usada:</value>
+  </data>
 </root>

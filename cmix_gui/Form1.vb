@@ -3,6 +3,7 @@
     Private cmix_version As String = String.Empty
     Private dict As String = String.Empty
     Private TaskRunning As Boolean = False
+    Private ExitSoftware As Boolean = False
 
     'variables that holds localization messages:
     Private AboutString1 As String = My.Resources.About1
@@ -11,6 +12,7 @@
     Private BrowseFileButton As String = My.Resources.BrowseFileButton
     Private BrowseFolderButton As String = My.Resources.BrowseFolderButton
     Private BrowseOutputButton As String = My.Resources.BrowseOutputButton
+    Private ClearLogButtonString As String = My.Resources.ClearLogButton
     Private cmixVersionToUseLabelString As String = My.Resources.cmixVersionToUseLabel
     Private CompressFolderSelectedMessage As String = My.Resources.CompressFolderSelectedMessage
     Private CompressInputMessage As String = My.Resources.CompressInputMessage
@@ -32,6 +34,10 @@
     Private FormName As String = My.Resources.FormName
     Private TaskRunningString As String = My.Resources.TaskRunning
 
+    Private AvailableRAMString As String = My.Resources.AvailableRAM 
+    Private UsedRAMString As String = My.Resources.UsedRAM
+    Private TotalRAMString As String = My.Resources.TotalRAM 
+
     Private Sub UpdateElementsInForm()
         GetInputNameAndUpdateForm(InputFileTxt.Text)
         If CompressRButton.Checked Then
@@ -47,6 +53,7 @@
         BrowseButton1.Text = BrowseFileButton
         BrowseFolder.Text = BrowseFolderButton
         BrowseButton2.Text = BrowseOutputButton
+        ClearLogButton.Text = ClearLogButtonString
         cmixVersionToUseLabel.Text = cmixVersionToUseLabelString
         CompressRButton.Text = CompressRButtonString
         PreprocessRButton.Text = PreprocessRButtonString
@@ -64,6 +71,7 @@
             BrowseFileButton = My.Resources.BrowseFileButton
             BrowseFolderButton = My.Resources.BrowseFolderButton
             BrowseOutputButton = My.Resources.BrowseOutputButton
+            ClearLogButtonString = My.Resources.ClearLogButton
             cmixVersionToUseLabelString = My.Resources.cmixVersionToUseLabel
             CompressFolderSelectedMessage = My.Resources.CompressFolderSelectedMessage
             CompressInputMessage = My.Resources.CompressInputMessage
@@ -84,6 +92,9 @@
             UseDictString = My.Resources.UseDict
             Finished = My.Resources.Finished
             FormName = My.Resources.FormName
+            AvailableRAMString = My.Resources.AvailableRAM 
+            UsedRAMString = My.Resources.UsedRAM 
+            TotalRAMString = My.Resources.TotalRAM 
         Else
             AboutString1 = My.Resources.About1Spanish
             AboutString2 = My.Resources.About2Spanish
@@ -91,6 +102,7 @@
             BrowseFileButton = My.Resources.BrowseFileButtonSpanish
             BrowseFolderButton = My.Resources.BrowseFolderButtonSpanish
             BrowseOutputButton = My.Resources.BrowseOutputButtonSpanish
+            ClearLogButtonString = My.Resources.ClearLogButtonSpanish
             cmixVersionToUseLabelString = My.Resources.cmixVersionToUseLabelSpanish
             CompressFolderSelectedMessage = My.Resources.CompressFolderSelectedMessageSpanish
             CompressInputMessage = My.Resources.CompressInputMessageSpanish
@@ -111,6 +123,9 @@
             UseDictString = My.Resources.UseDictSpanish
             Finished = My.Resources.FinishedSpanish
             FormName = My.Resources.FormNameSpanish
+             AvailableRAMString = My.Resources.AvailableRAMSpanish
+            UsedRAMString = My.Resources.UsedRAMSpanish
+            TotalRAMString = My.Resources.TotalRAMSpanish
         End If
         UpdateElementsInForm()
     End Sub
@@ -123,6 +138,8 @@
         UseEngDictCheckbox.Checked = My.Settings.UseEngDict
         EnglishRButton.Checked = My.Settings.EnglishLanguage
         SpanishRButton.Checked = My.Settings.SpanishLanguage
+        Dim Thread As New Threading.Thread(Sub() UpdateRAMBars(False, False))
+        Thread.Start()
     End Sub
     Private Sub CompressRButton_CheckedChanged(sender As Object, e As EventArgs) Handles CompressRButton.CheckedChanged
         InputFileMessage.Text = CompressInputMessage
@@ -354,7 +371,7 @@
         If InputFileTxt.Text IsNot String.Empty Then
             If TaskRunning = False Then
                 TaskRunning = True
-                Dim Thread As New System.Threading.Thread(Sub() ProcessThread())
+                Dim Thread As New Threading.Thread(Sub() ProcessThread())
                 Thread.Start()
             Else
                 MsgBox(TaskRunningString)
@@ -423,5 +440,53 @@
 
     Private Sub InputFileTxt_TextChanged(sender As Object, e As EventArgs) Handles InputFileTxt.TextChanged
         GetInputNameAndUpdateForm(InputFileTxt.Text)
+    End Sub
+
+    Private Delegate Sub ClearLogInvoker()
+    Private Sub ClearLog()
+        If ProgressLog.InvokeRequired Then
+            ProgressLog.Invoke(New ClearLogInvoker(AddressOf ClearLog))
+        Else
+            ProgressLog.Clear()
+        End If
+    End Sub
+    Private Sub ClearLogButton_Click(sender As Object, e As EventArgs) Handles ClearLogButton.Click
+        If TaskRunning = False Then ClearLog()
+    End Sub
+
+    Private Delegate Sub UpdateRAMBarsInfoker(Invoked1 As Boolean, Invoked2 As Boolean)
+    Private Sub UpdateRAMBars(Invoked1 As Boolean, Invoked2 As Boolean)
+        Dim TotalSystemRAM As Double = My.Computer.Info.TotalPhysicalMemory / 1024 / 1024 / 1024
+        TotalRAM.GetCurrentParent.Invoke(Sub()
+                                             TotalRAM.Text = String.Format(TotalRAMString + " {0:N2} GB", TotalSystemRAM)
+                                         End Sub)
+        RAMBar.GetCurrentParent.Invoke(Sub()
+                                           RAMBar.Maximum = TotalSystemRAM
+                                       End Sub)
+        Dim AvailableSystemRAM As Double = 0.0
+        Dim UsedSystemRAM As Double = 0.0
+        While True
+            If ExitSoftware Then Exit While
+            Try
+                AvailableSystemRAM = My.Computer.Info.AvailablePhysicalMemory / 1024 / 1024 / 1024
+                UsedSystemRAM = TotalSystemRAM - AvailableSystemRAM
+                AvailableRAM.GetCurrentParent.Invoke(Sub()
+                                                         AvailableRAM.Text = String.Format(AvailableRAMString + " {0:N2} GB", AvailableSystemRAM)
+                                                     End Sub)
+                UsedRAM.GetCurrentParent.Invoke(Sub()
+                                                    UsedRAM.Text = String.Format(UsedRAMString + " {0:N2} GB", UsedSystemRAM)
+                                                End Sub)
+                RAMBar.GetCurrentParent.Invoke(Sub()
+                                                   RAMBar.Value = UsedSystemRAM
+                                               End Sub)
+                Threading.Thread.Sleep(500)
+            Catch
+                Continue While
+            End Try
+        End While
+    End Sub
+
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        ExitSoftware = True
     End Sub
 End Class

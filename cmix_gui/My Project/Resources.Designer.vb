@@ -115,6 +115,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Available RAM:.
+        '''</summary>
+        Friend ReadOnly Property AvailableRAM() As String
+            Get
+                Return ResourceManager.GetString("AvailableRAM", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to RAM disponible:.
+        '''</summary>
+        Friend ReadOnly Property AvailableRAMSpanish() As String
+            Get
+                Return ResourceManager.GetString("AvailableRAMSpanish", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Browse File.
         '''</summary>
         Friend ReadOnly Property BrowseFileButton() As String
@@ -165,6 +183,24 @@ Namespace My.Resources
         Friend ReadOnly Property BrowseOutputButtonSpanish() As String
             Get
                 Return ResourceManager.GetString("BrowseOutputButtonSpanish", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Clear Log.
+        '''</summary>
+        Friend ReadOnly Property ClearLogButton() As String
+            Get
+                Return ResourceManager.GetString("ClearLogButton", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Borrar Log.
+        '''</summary>
+        Friend ReadOnly Property ClearLogButtonSpanish() As String
+            Get
+                Return ResourceManager.GetString("ClearLogButtonSpanish", resourceCulture)
             End Get
         End Property
         
@@ -511,6 +547,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Total RAM:.
+        '''</summary>
+        Friend ReadOnly Property TotalRAM() As String
+            Get
+                Return ResourceManager.GetString("TotalRAM", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to RAM total:.
+        '''</summary>
+        Friend ReadOnly Property TotalRAMSpanish() As String
+            Get
+                Return ResourceManager.GetString("TotalRAMSpanish", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Use the English dictionary.
         '''</summary>
         Friend ReadOnly Property UseDict() As String
@@ -525,6 +579,24 @@ Namespace My.Resources
         Friend ReadOnly Property UseDictSpanish() As String
             Get
                 Return ResourceManager.GetString("UseDictSpanish", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Used RAM:.
+        '''</summary>
+        Friend ReadOnly Property UsedRAM() As String
+            Get
+                Return ResourceManager.GetString("UsedRAM", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to RAM usada:.
+        '''</summary>
+        Friend ReadOnly Property UsedRAMSpanish() As String
+            Get
+                Return ResourceManager.GetString("UsedRAMSpanish", resourceCulture)
             End Get
         End Property
     End Module

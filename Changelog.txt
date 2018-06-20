@@ -1,3 +1,7 @@
+v1.2 (6/20/2018)
+-Added Clear Log Button
+-Added RAM information
+
 v1.1 (6/4/2018)
 -Added log to see progress
 -Can save log to file

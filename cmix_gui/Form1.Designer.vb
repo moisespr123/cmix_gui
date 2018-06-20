@@ -51,8 +51,15 @@ Partial Class Form1
         Me.ProgressLog = New System.Windows.Forms.RichTextBox()
         Me.SaveLogButton = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.ClearLogButton = New System.Windows.Forms.Button()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.TotalRAM = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.AvailableRAM = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.UsedRAM = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.RAMBar = New System.Windows.Forms.ToolStripProgressBar()
         Me.ActionGroupBox.SuspendLayout
         Me.GroupBox2.SuspendLayout
+        Me.StatusStrip1.SuspendLayout
         Me.SuspendLayout
         '
         'InputFileMessage
@@ -221,12 +228,12 @@ Partial Class Form1
         '
         'VersionLabel
         '
-        Me.VersionLabel.AutoSize = True
+        Me.VersionLabel.AutoSize = true
         Me.VersionLabel.Location = New System.Drawing.Point(396, 251)
         Me.VersionLabel.Name = "VersionLabel"
         Me.VersionLabel.Size = New System.Drawing.Size(50, 13)
         Me.VersionLabel.TabIndex = 14
-        Me.VersionLabel.Text = "GUI v1.1"
+        Me.VersionLabel.Text = "GUI v1.2"
         '
         'BrowseFolder
         '
@@ -294,7 +301,7 @@ Partial Class Form1
         '
         Me.SaveLogButton.Location = New System.Drawing.Point(475, 244)
         Me.SaveLogButton.Name = "SaveLogButton"
-        Me.SaveLogButton.Size = New System.Drawing.Size(406, 23)
+        Me.SaveLogButton.Size = New System.Drawing.Size(310, 23)
         Me.SaveLogButton.TabIndex = 17
         Me.SaveLogButton.Text = "Save Log"
         Me.SaveLogButton.UseVisualStyleBackColor = true
@@ -308,12 +315,55 @@ Partial Class Form1
         Me.Label1.TabIndex = 18
         Me.Label1.Text = "Log:"
         '
+        'ClearLogButton
+        '
+        Me.ClearLogButton.Location = New System.Drawing.Point(791, 244)
+        Me.ClearLogButton.Name = "ClearLogButton"
+        Me.ClearLogButton.Size = New System.Drawing.Size(90, 23)
+        Me.ClearLogButton.TabIndex = 19
+        Me.ClearLogButton.Text = "Clear Log"
+        Me.ClearLogButton.UseVisualStyleBackColor = true
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TotalRAM, Me.AvailableRAM, Me.UsedRAM, Me.RAMBar})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 276)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(893, 22)
+        Me.StatusStrip1.TabIndex = 21
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'TotalRAM
+        '
+        Me.TotalRAM.Name = "TotalRAM"
+        Me.TotalRAM.Size = New System.Drawing.Size(101, 17)
+        Me.TotalRAM.Text = "Total RAM: 0.0 GB"
+        '
+        'AvailableRAM
+        '
+        Me.AvailableRAM.Name = "AvailableRAM"
+        Me.AvailableRAM.Size = New System.Drawing.Size(123, 17)
+        Me.AvailableRAM.Text = "Available RAM: 0.0 GB"
+        '
+        'UsedRAM
+        '
+        Me.UsedRAM.Name = "UsedRAM"
+        Me.UsedRAM.Size = New System.Drawing.Size(98, 17)
+        Me.UsedRAM.Text = "Used RAM: 0.0GB"
+        '
+        'RAMBar
+        '
+        Me.RAMBar.Name = "RAMBar"
+        Me.RAMBar.Size = New System.Drawing.Size(100, 16)
+        '
         'Form1
         '
         Me.AllowDrop = true
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(893, 272)
+        Me.ClientSize = New System.Drawing.Size(893, 298)
+        Me.Controls.Add(Me.StatusStrip1)
+        Me.Controls.Add(Me.ClearLogButton)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.SaveLogButton)
         Me.Controls.Add(Me.ProgressLog)
@@ -343,6 +393,8 @@ Partial Class Form1
         Me.ActionGroupBox.PerformLayout
         Me.GroupBox2.ResumeLayout(false)
         Me.GroupBox2.PerformLayout
+        Me.StatusStrip1.ResumeLayout(false)
+        Me.StatusStrip1.PerformLayout
         Me.ResumeLayout(false)
         Me.PerformLayout
 
@@ -377,4 +429,10 @@ End Sub
     Friend WithEvents ProgressLog As RichTextBox
     Friend WithEvents SaveLogButton As Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents ClearLogButton As Button
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents TotalRAM As ToolStripStatusLabel
+    Friend WithEvents AvailableRAM As ToolStripStatusLabel
+    Friend WithEvents UsedRAM As ToolStripStatusLabel
+    Friend WithEvents RAMBar As ToolStripProgressBar
 End Class
