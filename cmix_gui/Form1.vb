@@ -138,7 +138,7 @@
         UseEngDictCheckbox.Checked = My.Settings.UseEngDict
         EnglishRButton.Checked = My.Settings.EnglishLanguage
         SpanishRButton.Checked = My.Settings.SpanishLanguage
-        Dim Thread As New Threading.Thread(Sub() UpdateRAMBars(False, False))
+        Dim Thread As New Threading.Thread(Sub() UpdateRAMBars())
         Thread.Start()
     End Sub
     Private Sub CompressRButton_CheckedChanged(sender As Object, e As EventArgs) Handles CompressRButton.CheckedChanged
@@ -453,9 +453,8 @@
     Private Sub ClearLogButton_Click(sender As Object, e As EventArgs) Handles ClearLogButton.Click
         If TaskRunning = False Then ClearLog()
     End Sub
-
-    Private Delegate Sub UpdateRAMBarsInfoker(Invoked1 As Boolean, Invoked2 As Boolean)
-    Private Sub UpdateRAMBars(Invoked1 As Boolean, Invoked2 As Boolean)
+    
+    Private Sub UpdateRAMBars()
         Dim TotalSystemRAM As Double = My.Computer.Info.TotalPhysicalMemory / 1024 / 1024 / 1024
         TotalRAM.GetCurrentParent.Invoke(Sub()
                                              TotalRAM.Text = String.Format(TotalRAMString + " {0:N2} GB", TotalSystemRAM)
