@@ -151,7 +151,7 @@ Partial Class Form1
         'cmixVersionDropdown
         '
         Me.cmixVersionDropdown.FormattingEnabled = true
-        Me.cmixVersionDropdown.Items.AddRange(New Object() {"cmix_v15b"})
+        Me.cmixVersionDropdown.Items.AddRange(New Object() {"cmix_v15b", "cmix_v15c"})
         Me.cmixVersionDropdown.Location = New System.Drawing.Point(12, 164)
         Me.cmixVersionDropdown.Name = "cmixVersionDropdown"
         Me.cmixVersionDropdown.Size = New System.Drawing.Size(121, 21)
@@ -233,7 +233,7 @@ Partial Class Form1
         Me.VersionLabel.Name = "VersionLabel"
         Me.VersionLabel.Size = New System.Drawing.Size(50, 13)
         Me.VersionLabel.TabIndex = 14
-        Me.VersionLabel.Text = "GUI v1.2"
+        Me.VersionLabel.Text = "GUI v1.3"
         '
         'BrowseFolder
         '

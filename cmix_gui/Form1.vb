@@ -197,7 +197,11 @@
     End Function
 
     Private Sub SetVersion(Extension As String)
-        If Extension.Contains("15b") Then cmixVersionDropdown.SelectedItem = "cmix_v15b"
+        If Extension.Contains("15b") Then
+            cmixVersionDropdown.SelectedItem = "cmix_v15b"
+        ElseIf Extension.Contains("15c") Then
+            cmixVersionDropdown.SelectedItem = "cmix_v15c"
+        End If
     End Sub
 
     Private Sub SetDict(Extension As String)
@@ -275,6 +279,8 @@
         My.Settings.Save()
         If cmixVersionDropdown.SelectedItem = "cmix_v15b" Then
             cmix_version = "15b"
+        Elseif cmixVersionDropdown.selectedItem = "cmix_v15c" then
+            cmix_version = "15c"
         End If
         If OutputFileName IsNot String.Empty Then
             SetOutputFilename()
@@ -453,7 +459,7 @@
     Private Sub ClearLogButton_Click(sender As Object, e As EventArgs) Handles ClearLogButton.Click
         If TaskRunning = False Then ClearLog()
     End Sub
-    
+
     Private Sub UpdateRAMBars()
         Dim TotalSystemRAM As Double = My.Computer.Info.TotalPhysicalMemory / 1024 / 1024 / 1024
         TotalRAM.GetCurrentParent.Invoke(Sub()
