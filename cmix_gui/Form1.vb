@@ -207,7 +207,7 @@
             cmixVersionDropdown.SelectedItem = "cmix_v15e"
         ElseIf Extension.Contains("15f") Then
             cmixVersionDropdown.SelectedItem = "cmix_v15f"
-              ElseIf Extension.Contains("15g") Then
+        ElseIf Extension.Contains("15g") Then
             cmixVersionDropdown.SelectedItem = "cmix_v15g"
         End If
     End Sub
@@ -287,7 +287,7 @@
         My.Settings.Save()
         If cmixVersionDropdown.SelectedItem = "cmix_v15b" Then
             cmix_version = "15b"
-        ElseIf cmixVersionDropdown.selectedItem = "cmix_v15c" Then
+        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15c" Then
             cmix_version = "15c"
         ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15d" Then
             cmix_version = "15d"
@@ -295,7 +295,7 @@
             cmix_version = "15e"
         ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15f" Then
             cmix_version = "15f"
-             ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15g" Then
+        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15g" Then
             cmix_version = "15g"
         End If
         If OutputFileName IsNot String.Empty Then
