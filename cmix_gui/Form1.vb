@@ -207,6 +207,8 @@
             cmixVersionDropdown.SelectedItem = "cmix_v15e"
         ElseIf Extension.Contains("15f") Then
             cmixVersionDropdown.SelectedItem = "cmix_v15f"
+              ElseIf Extension.Contains("15g") Then
+            cmixVersionDropdown.SelectedItem = "cmix_v15g"
         End If
     End Sub
 
@@ -280,7 +282,7 @@
         If CompressRButton.Checked Or PreprocessRButton.Checked Then OutputFileTxt.Text = OutputFileName + cmix_version + dict
     End Sub
 
-    Private Sub cmixVersionDropdown_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmixVersionDropdown.SelectedIndexChanged
+    Private Sub CmixVersionDropdown_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmixVersionDropdown.SelectedIndexChanged
         My.Settings.Version = cmixVersionDropdown.SelectedItem
         My.Settings.Save()
         If cmixVersionDropdown.SelectedItem = "cmix_v15b" Then
@@ -293,6 +295,8 @@
             cmix_version = "15e"
         ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15f" Then
             cmix_version = "15f"
+             ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15g" Then
+            cmix_version = "15g"
         End If
         If OutputFileName IsNot String.Empty Then
             SetOutputFilename()
@@ -443,10 +447,11 @@
     End Sub
 
     Private Sub SaveLogButton_Click(sender As Object, e As EventArgs) Handles SaveLogButton.Click
-        Dim SaveLogFile As New SaveFileDialog
-        SaveLogFile.Title = "Browse for a location to save the log file"
-        SaveLogFile.Filter = "Log file (*.log)|*.log"
-        SaveLogFile.FileName = String.Empty
+        Dim SaveLogFile As New SaveFileDialog With {
+            .Title = "Browse for a location to save the log file",
+            .Filter = "Log file (*.log)|*.log",
+            .FileName = String.Empty
+        }
         Dim dialogResult As DialogResult = SaveLogFile.ShowDialog
         If DialogResult.OK Then
             If SaveLogFile.FileName = String.Empty = False Then
