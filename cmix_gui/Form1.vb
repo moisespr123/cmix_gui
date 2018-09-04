@@ -209,6 +209,8 @@
             cmixVersionDropdown.SelectedItem = "cmix_v15f"
         ElseIf Extension.Contains("15g") Then
             cmixVersionDropdown.SelectedItem = "cmix_v15g"
+        ElseIf Extension.Contains("15h") Then
+            cmixVersionDropdown.SelectedItem = "cmix_v15h"
         End If
     End Sub
 
@@ -297,6 +299,8 @@
             cmix_version = "15f"
         ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15g" Then
             cmix_version = "15g"
+        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15h" Then
+            cmix_version = "15h"
         End If
         If OutputFileName IsNot String.Empty Then
             SetOutputFilename()
