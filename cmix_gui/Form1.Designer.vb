@@ -151,7 +151,7 @@ Partial Class Form1
         'cmixVersionDropdown
         '
         Me.cmixVersionDropdown.FormattingEnabled = True
-        Me.cmixVersionDropdown.Items.AddRange(New Object() {"cmix_v15i", "cmix_v15h", "cmix_v15g", "cmix_v15f", "cmix_v15e", "cmix_v15d", "cmix_v15c", "cmix_v15b"})
+        Me.cmixVersionDropdown.Items.AddRange(New Object() {"cmix_v16b", "cmix_v16a", "cmix_v15i", "cmix_v15h", "cmix_v15g", "cmix_v15f", "cmix_v15e", "cmix_v15d", "cmix_v15c", "cmix_v15b"})
         Me.cmixVersionDropdown.Location = New System.Drawing.Point(12, 164)
         Me.cmixVersionDropdown.Name = "cmixVersionDropdown"
         Me.cmixVersionDropdown.Size = New System.Drawing.Size(121, 21)

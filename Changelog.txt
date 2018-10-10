@@ -1,3 +1,6 @@
+v1.4r6
+-Adds support for cmix_v16a and cmix_v16b
+
 v1.4r5 (9/17/2018)
 -Adds support for cmix_v15i
 
