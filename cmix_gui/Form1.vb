@@ -247,14 +247,24 @@
         cmixProcessInfo.RedirectStandardError = Not ShowCMD.Checked
         cmixProcessInfo.UseShellExecute = ShowCMD.Checked
         cmixProcess = Process.Start(cmixProcessInfo)
+        Dim WrotePretraining As Boolean = False
+        Dim WroteProgress As Boolean = False
         If Not ShowCMD.Checked Then
             Dim currentOutput As String = String.Empty
             While Not cmixProcess.HasExited
                 While Not cmixProcess.StandardError.EndOfStream
                     currentOutput = cmixProcess.StandardError.ReadLine
-                    If currentOutput.Contains("progress") Or currentOutput.Contains("pretraining") Then
-                        If currentOutput.Contains("progress: 0%") Or currentOutput.Contains("pretraining: 0%") Then
+                    If currentOutput.Contains("pretraining") Then
+                        If Not WrotePretraining Then
                             UpdateLog(currentOutput)
+                            WrotePretraining = True
+                        Else
+                            UpdateLog(currentOutput, True)
+                        End If
+                    ElseIf currentOutput.Contains("progress") Then
+                        If Not WroteProgress Then
+                            UpdateLog(currentOutput)
+                            WroteProgress = True
                         Else
                             UpdateLog(currentOutput, True)
                         End If
