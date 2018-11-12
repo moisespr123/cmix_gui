@@ -244,14 +244,14 @@
         cmixProcessInfo.FileName = My.Settings.Version + ".exe"
         cmixProcessInfo.Arguments = action + " """ + Input + """ """ + Output + """"
         cmixProcessInfo.CreateNoWindow = Not ShowCMD.Checked
-        cmixProcessInfo.RedirectStandardOutput = Not ShowCMD.Checked
+        cmixProcessInfo.RedirectStandardError = Not ShowCMD.Checked
         cmixProcessInfo.UseShellExecute = ShowCMD.Checked
         cmixProcess = Process.Start(cmixProcessInfo)
         If Not ShowCMD.Checked Then
             Dim currentOutput As String = String.Empty
             While Not cmixProcess.HasExited
-                While Not cmixProcess.StandardOutput.EndOfStream
-                    currentOutput = cmixProcess.StandardOutput.Read
+                While Not cmixProcess.StandardError.EndOfStream
+                    currentOutput = cmixProcess.StandardError.ReadLine
                     If currentOutput.Contains("progress") Or currentOutput.Contains("pretraining") Then
                         If currentOutput.Contains("progress: 0%") Or currentOutput.Contains("pretraining: 0%") Then
                             UpdateLog(currentOutput)
