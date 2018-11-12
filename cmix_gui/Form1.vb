@@ -31,12 +31,13 @@
         If My.Computer.FileSystem.FileExists("cmix_v15d.exe") Then cmixVersionDropdown.Items.Add("cmix_v15d")
         If My.Computer.FileSystem.FileExists("cmix_v15c.exe") Then cmixVersionDropdown.Items.Add("cmix_v15c")
         If My.Computer.FileSystem.FileExists("cmix_v15b.exe") Then cmixVersionDropdown.Items.Add("cmix_v15b")
+        If Not My.Computer.FileSystem.FileExists("english.dic") Then UseEngDictCheckbox.Enabled = False
         If cmixVersionDropdown.Items.Contains(My.Settings.Version) Then cmixVersionDropdown.SelectedItem = My.Settings.Version
     End Sub
     Private Sub CompressRButton_CheckedChanged(sender As Object, e As EventArgs) Handles CompressRButton.CheckedChanged
         InputFileMessage.Text = Translations.CompressInputMessage
         OutputFileMessage.Text = Translations.CompressOutputMessage
-        UseEngDictCheckbox.Enabled = True
+        If My.Computer.FileSystem.FileExists("english.dic") Then UseEngDictCheckbox.Enabled = True
         My.Settings.Compress = CompressRButton.Checked
         My.Settings.Save()
         If InputFileTxt.Text IsNot String.Empty Then GetInputNameAndUpdateForm(InputFileTxt.Text)
@@ -45,7 +46,7 @@
     Private Sub ExtractRButton_CheckedChanged(sender As Object, e As EventArgs) Handles ExtractRButton.CheckedChanged
         InputFileMessage.Text = Translations.ExtractInputMessage
         OutputFileMessage.Text = Translations.ExtractOutputMessage
-        UseEngDictCheckbox.Enabled = True
+        If My.Computer.FileSystem.FileExists("english.dic") Then UseEngDictCheckbox.Enabled = True
         My.Settings.Extract = ExtractRButton.Checked
         My.Settings.Save()
         If InputFileTxt.Text IsNot String.Empty Then GetInputNameAndUpdateForm(InputFileTxt.Text)
@@ -118,9 +119,21 @@
         End If
     End Sub
 
-    Private Sub SetDict(Extension As String)
-        If Extension.Contains("_dict") Then UseEngDictCheckbox.Checked = True Else UseEngDictCheckbox.Checked = False
-    End Sub
+    Private Function SetDict(Extension As String) As Boolean
+        If Extension.Contains("_dict") Then
+            If My.Computer.FileSystem.FileExists("english.dic") Then
+                UseEngDictCheckbox.Checked = True
+            Else
+                MsgBox("english.dic is missing. Cannot use dictionary.")
+                InputFileTxt.Text = ""
+                OutputFileTxt.Text = ""
+                Return False
+            End If
+        Else
+            UseEngDictCheckbox.Checked = False
+        End If
+        Return True
+    End Function
 
     Private Sub SetOutputFileNamePathWithoutExtension(Path As String)
         OutputFileTxt.Text = My.Computer.FileSystem.GetParentPath(Path) + "\" + IO.Path.GetFileNameWithoutExtension(Path)
@@ -132,9 +145,10 @@
             Dim FileExtension As String = IO.Path.GetExtension(Path)
             If FileExtension.Contains("cmix") Then
                 SetVersion(FileExtension)
-                SetDict(FileExtension)
-                SetOutputFileNamePathWithoutExtension(Path)
-                ExtractRButton.Checked = True
+                If SetDict(FileExtension) Then
+                    SetOutputFileNamePathWithoutExtension(Path)
+                    ExtractRButton.Checked = True
+                End If
             End If
             If CompressRButton.Checked Or PreprocessRButton.Checked Then
                 OutputFileName = Path + ".cmix"
@@ -154,7 +168,7 @@
         End If
         Dim response As DialogResult = OpenFileDialog1.ShowDialog
         If response = DialogResult.OK Then
-            InputFileTxt.Text = GetInputNameAndUpdateForm(OpenFileDialog1.FileName)
+            InputFileTxt.Text = OpenFileDialog1.FileName
         End If
     End Sub
 
