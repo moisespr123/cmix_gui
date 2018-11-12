@@ -1,3 +1,6 @@
+v1.4r7
+-Adds support for cmix_v16c and cmix_v16d
+
 v1.4r6
 -Adds support for cmix_v16a and cmix_v16b
 

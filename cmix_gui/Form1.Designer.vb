@@ -150,8 +150,8 @@ Partial Class Form1
         '
         'cmixVersionDropdown
         '
-        Me.cmixVersionDropdown.FormattingEnabled = True
-        Me.cmixVersionDropdown.Items.AddRange(New Object() {"cmix_v16b", "cmix_v16a", "cmix_v15i", "cmix_v15h", "cmix_v15g", "cmix_v15f", "cmix_v15e", "cmix_v15d", "cmix_v15c", "cmix_v15b"})
+        Me.cmixVersionDropdown.FormattingEnabled = true
+        Me.cmixVersionDropdown.Items.AddRange(New Object() {"cmix_v16d", "cmix_v16c", "cmix_v16b", "cmix_v16a", "cmix_v15i", "cmix_v15h", "cmix_v15g", "cmix_v15f", "cmix_v15e", "cmix_v15d", "cmix_v15c", "cmix_v15b"})
         Me.cmixVersionDropdown.Location = New System.Drawing.Point(12, 164)
         Me.cmixVersionDropdown.Name = "cmixVersionDropdown"
         Me.cmixVersionDropdown.Size = New System.Drawing.Size(121, 21)
@@ -164,7 +164,7 @@ Partial Class Form1
         Me.BrowseButton1.Size = New System.Drawing.Size(96, 23)
         Me.BrowseButton1.TabIndex = 4
         Me.BrowseButton1.Text = "Browse File"
-        Me.BrowseButton1.UseVisualStyleBackColor = True
+        Me.BrowseButton1.UseVisualStyleBackColor = true
         '
         'BrowseButton2
         '
@@ -173,17 +173,17 @@ Partial Class Form1
         Me.BrowseButton2.Size = New System.Drawing.Size(96, 23)
         Me.BrowseButton2.TabIndex = 7
         Me.BrowseButton2.Text = "Browse"
-        Me.BrowseButton2.UseVisualStyleBackColor = True
+        Me.BrowseButton2.UseVisualStyleBackColor = true
         '
         'StartButton
         '
-        Me.StartButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.StartButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 24!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.StartButton.Location = New System.Drawing.Point(183, 151)
         Me.StartButton.Name = "StartButton"
         Me.StartButton.Size = New System.Drawing.Size(263, 57)
         Me.StartButton.TabIndex = 10
         Me.StartButton.Text = "Start"
-        Me.StartButton.UseVisualStyleBackColor = True
+        Me.StartButton.UseVisualStyleBackColor = true
         '
         'OpenFileDialog1
         '
@@ -191,7 +191,7 @@ Partial Class Form1
         '
         'AboutLabel1
         '
-        Me.AboutLabel1.AutoSize = True
+        Me.AboutLabel1.AutoSize = true
         Me.AboutLabel1.Location = New System.Drawing.Point(9, 225)
         Me.AboutLabel1.Name = "AboutLabel1"
         Me.AboutLabel1.Size = New System.Drawing.Size(165, 13)
@@ -200,7 +200,7 @@ Partial Class Form1
         '
         'AboutLabel2
         '
-        Me.AboutLabel2.AutoSize = True
+        Me.AboutLabel2.AutoSize = true
         Me.AboutLabel2.Location = New System.Drawing.Point(9, 238)
         Me.AboutLabel2.Name = "AboutLabel2"
         Me.AboutLabel2.Size = New System.Drawing.Size(101, 13)
@@ -209,7 +209,7 @@ Partial Class Form1
         '
         'Label4
         '
-        Me.Label4.AutoSize = True
+        Me.Label4.AutoSize = true
         Me.Label4.Location = New System.Drawing.Point(9, 251)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(96, 13)
@@ -218,22 +218,22 @@ Partial Class Form1
         '
         'LinkLabel1
         '
-        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.AutoSize = true
         Me.LinkLabel1.Location = New System.Drawing.Point(111, 251)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(174, 13)
         Me.LinkLabel1.TabIndex = 11
-        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.TabStop = true
         Me.LinkLabel1.Text = "https://github.com/byronknoll/cmix"
         '
         'VersionLabel
         '
-        Me.VersionLabel.AutoSize = True
+        Me.VersionLabel.AutoSize = true
         Me.VersionLabel.Location = New System.Drawing.Point(396, 251)
         Me.VersionLabel.Name = "VersionLabel"
         Me.VersionLabel.Size = New System.Drawing.Size(59, 13)
         Me.VersionLabel.TabIndex = 14
-        Me.VersionLabel.Text = "GUI v1.4r5"
+        Me.VersionLabel.Text = "GUI v1.4r7"
         '
         'BrowseFolder
         '
