@@ -297,4 +297,10 @@
   <data name="UsedRAMSpanish" xml:space="preserve">
     <value>RAM usada:</value>
   </data>
+  <data name="ShowCMD" xml:space="preserve">
+    <value>Show CMD</value>
+  </data>
+  <data name="ShowCMDSpanish" xml:space="preserve">
+    <value>Mostrar CMD</value>
+  </data>
 </root>

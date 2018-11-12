@@ -511,6 +511,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Show CMD.
+        '''</summary>
+        Friend ReadOnly Property ShowCMD() As String
+            Get
+                Return ResourceManager.GetString("ShowCMD", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Mostrar CMD.
+        '''</summary>
+        Friend ReadOnly Property ShowCMDSpanish() As String
+            Get
+                Return ResourceManager.GetString("ShowCMDSpanish", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Start.
         '''</summary>
         Friend ReadOnly Property StartButton() As String

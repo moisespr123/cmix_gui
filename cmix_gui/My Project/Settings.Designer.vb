@@ -137,6 +137,18 @@ Namespace My
                 Me("SpanishLanguage") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property ShowCMD() As Boolean
+            Get
+                Return CType(Me("ShowCMD"),Boolean)
+            End Get
+            Set
+                Me("ShowCMD") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

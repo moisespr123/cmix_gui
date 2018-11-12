@@ -57,6 +57,7 @@ Partial Class Form1
         Me.AvailableRAM = New System.Windows.Forms.ToolStripStatusLabel()
         Me.UsedRAM = New System.Windows.Forms.ToolStripStatusLabel()
         Me.RAMBar = New System.Windows.Forms.ToolStripProgressBar()
+        Me.ShowCMD = New System.Windows.Forms.CheckBox()
         Me.ActionGroupBox.SuspendLayout
         Me.GroupBox2.SuspendLayout
         Me.StatusStrip1.SuspendLayout
@@ -355,12 +356,25 @@ Partial Class Form1
         Me.RAMBar.Name = "RAMBar"
         Me.RAMBar.Size = New System.Drawing.Size(100, 16)
         '
+        'ShowCMD
+        '
+        Me.ShowCMD.AutoSize = true
+        Me.ShowCMD.Checked = true
+        Me.ShowCMD.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.ShowCMD.Location = New System.Drawing.Point(183, 214)
+        Me.ShowCMD.Name = "ShowCMD"
+        Me.ShowCMD.Size = New System.Drawing.Size(80, 17)
+        Me.ShowCMD.TabIndex = 22
+        Me.ShowCMD.Text = "Show CMD"
+        Me.ShowCMD.UseVisualStyleBackColor = true
+        '
         'Form1
         '
         Me.AllowDrop = true
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(893, 298)
+        Me.Controls.Add(Me.ShowCMD)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ClearLogButton)
         Me.Controls.Add(Me.Label1)
@@ -434,4 +448,5 @@ End Sub
     Friend WithEvents AvailableRAM As ToolStripStatusLabel
     Friend WithEvents UsedRAM As ToolStripStatusLabel
     Friend WithEvents RAMBar As ToolStripProgressBar
+    Friend WithEvents ShowCMD As CheckBox
 End Class

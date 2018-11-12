@@ -5,131 +5,6 @@
     Private TaskRunning As Boolean = False
     Private ExitSoftware As Boolean = False
 
-    'variables that holds localization messages:
-    Private AboutString1 As String = My.Resources.About1
-    Private AboutString2 As String = My.Resources.About2
-    Private ActionGroupBoxString As String = My.Resources.ActionGroupBox
-    Private BrowseFileButton As String = My.Resources.BrowseFileButton
-    Private BrowseFolderButton As String = My.Resources.BrowseFolderButton
-    Private BrowseOutputButton As String = My.Resources.BrowseOutputButton
-    Private ClearLogButtonString As String = My.Resources.ClearLogButton
-    Private cmixVersionToUseLabelString As String = My.Resources.cmixVersionToUseLabel
-    Private CompressFolderSelectedMessage As String = My.Resources.CompressFolderSelectedMessage
-    Private CompressInputMessage As String = My.Resources.CompressInputMessage
-    Private CompressOutputMessage As String = My.Resources.CompressOutputMessage
-    Private CompressRButtonString As String = My.Resources.CompressRButton
-    Private ExtractFolderSelectedMessage As String = My.Resources.ExtractFolderSelectedMessage
-    Private ExtractInputMessage As String = My.Resources.ExtractInputMessage
-    Private ExtractOutputMessage As String = My.Resources.ExtractOutputMessage
-    Private ExtractRButtonString As String = My.Resources.ExtractRButton
-    Private LogSaved As String = My.Resources.LogSaved
-    Private PreprocessFolderSelectedMessage As String = My.Resources.PreprocessFolderSelectedMessage
-    Private PreprocessInputMessage As String = My.Resources.PreprocessInputMessage
-    Private PreprocessOutputMessage As String = My.Resources.PreprocessOutputMessage
-    Private PreprocessRButtonString As String = My.Resources.PreprocessRButton
-    Private SaveLogButtonString As String = My.Resources.SaveLogButton
-    Private StartButtonString As String = My.Resources.StartButton
-    Private UseDictString As String = My.Resources.UseDict
-    Private Finished As String = My.Resources.Finished
-    Private FormName As String = My.Resources.FormName
-    Private TaskRunningString As String = My.Resources.TaskRunning
-
-    Private AvailableRAMString As String = My.Resources.AvailableRAM
-    Private UsedRAMString As String = My.Resources.UsedRAM
-    Private TotalRAMString As String = My.Resources.TotalRAM
-
-    Private Sub UpdateElementsInForm()
-        GetInputNameAndUpdateForm(InputFileTxt.Text)
-        If CompressRButton.Checked Then
-            InputFileMessage.Text = CompressInputMessage
-        ElseIf PreprocessRButton.Checked Then
-            InputFileMessage.Text = PreprocessInputMessage
-        ElseIf ExtractRButton.Checked Then
-            InputFileMessage.Text = ExtractInputMessage
-        End If
-        AboutLabel1.Text = AboutString1
-        AboutLabel2.Text = AboutString2
-        ActionGroupBox.Text = ActionGroupBoxString
-        BrowseButton1.Text = BrowseFileButton
-        BrowseFolder.Text = BrowseFolderButton
-        BrowseButton2.Text = BrowseOutputButton
-        ClearLogButton.Text = ClearLogButtonString
-        cmixVersionToUseLabel.Text = cmixVersionToUseLabelString
-        CompressRButton.Text = CompressRButtonString
-        PreprocessRButton.Text = PreprocessRButtonString
-        ExtractRButton.Text = ExtractRButtonString
-        SaveLogButton.Text = SaveLogButtonString
-        StartButton.Text = StartButtonString
-        UseEngDictCheckbox.Text = UseDictString
-        Me.Text = FormName
-    End Sub
-    Private Sub UpdateMessageStrings(Language As String)
-        If Language = "English" Then
-            AboutString1 = My.Resources.About1
-            AboutString2 = My.Resources.About2
-            ActionGroupBoxString = My.Resources.ActionGroupBox
-            BrowseFileButton = My.Resources.BrowseFileButton
-            BrowseFolderButton = My.Resources.BrowseFolderButton
-            BrowseOutputButton = My.Resources.BrowseOutputButton
-            ClearLogButtonString = My.Resources.ClearLogButton
-            cmixVersionToUseLabelString = My.Resources.cmixVersionToUseLabel
-            CompressFolderSelectedMessage = My.Resources.CompressFolderSelectedMessage
-            CompressInputMessage = My.Resources.CompressInputMessage
-            CompressOutputMessage = My.Resources.CompressOutputMessage
-            CompressRButtonString = My.Resources.CompressRButton
-            ExtractFolderSelectedMessage = My.Resources.ExtractFolderSelectedMessage
-            ExtractInputMessage = My.Resources.ExtractInputMessage
-            ExtractOutputMessage = My.Resources.ExtractOutputMessage
-            ExtractRButtonString = My.Resources.ExtractRButton
-            LogSaved = My.Resources.LogSaved
-            PreprocessFolderSelectedMessage = My.Resources.PreprocessFolderSelectedMessage
-            PreprocessInputMessage = My.Resources.PreprocessInputMessage
-            PreprocessOutputMessage = My.Resources.PreprocessOutputMessage
-            PreprocessRButtonString = My.Resources.PreprocessRButton
-            SaveLogButtonString = My.Resources.SaveLogButton
-            StartButtonString = My.Resources.StartButton
-            TaskRunningString = My.Resources.TaskRunning
-            UseDictString = My.Resources.UseDict
-            Finished = My.Resources.Finished
-            FormName = My.Resources.FormName
-            AvailableRAMString = My.Resources.AvailableRAM
-            UsedRAMString = My.Resources.UsedRAM
-            TotalRAMString = My.Resources.TotalRAM
-        Else
-            AboutString1 = My.Resources.About1Spanish
-            AboutString2 = My.Resources.About2Spanish
-            ActionGroupBoxString = My.Resources.ActionGroupBoxSpanish
-            BrowseFileButton = My.Resources.BrowseFileButtonSpanish
-            BrowseFolderButton = My.Resources.BrowseFolderButtonSpanish
-            BrowseOutputButton = My.Resources.BrowseOutputButtonSpanish
-            ClearLogButtonString = My.Resources.ClearLogButtonSpanish
-            cmixVersionToUseLabelString = My.Resources.cmixVersionToUseLabelSpanish
-            CompressFolderSelectedMessage = My.Resources.CompressFolderSelectedMessageSpanish
-            CompressInputMessage = My.Resources.CompressInputMessageSpanish
-            CompressOutputMessage = My.Resources.CompressOutputMessageSpanish
-            CompressRButtonString = My.Resources.CompressRButtonSpanish
-            ExtractFolderSelectedMessage = My.Resources.ExtractFolderSelectedMessageSpanish
-            ExtractInputMessage = My.Resources.ExtractInputMessageSpanish
-            ExtractOutputMessage = My.Resources.ExtractOutputMessageSpanish
-            ExtractRButtonString = My.Resources.ExtractRButtonSpanish
-            LogSaved = My.Resources.LogSavedSpanish
-            PreprocessFolderSelectedMessage = My.Resources.PreprocessFolderSelectedMessageSpanish
-            PreprocessInputMessage = My.Resources.PreprocessInputMessageSpanish
-            PreprocessOutputMessage = My.Resources.PreprocessOutputMessageSpanish
-            PreprocessRButtonString = My.Resources.PreprocessRButtonSpanish
-            SaveLogButtonString = My.Resources.SaveLogButtonSpanish
-            StartButtonString = My.Resources.StartButtonSpanish
-            TaskRunningString = My.Resources.TaskRunningSpanish
-            UseDictString = My.Resources.UseDictSpanish
-            Finished = My.Resources.FinishedSpanish
-            FormName = My.Resources.FormNameSpanish
-            AvailableRAMString = My.Resources.AvailableRAMSpanish
-            UsedRAMString = My.Resources.UsedRAMSpanish
-            TotalRAMString = My.Resources.TotalRAMSpanish
-        End If
-        UpdateElementsInForm()
-    End Sub
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CheckExes()
         CompressRButton.Checked = My.Settings.Compress
@@ -138,6 +13,7 @@
         UseEngDictCheckbox.Checked = My.Settings.UseEngDict
         EnglishRButton.Checked = My.Settings.EnglishLanguage
         SpanishRButton.Checked = My.Settings.SpanishLanguage
+        ShowCMD.Checked = My.Settings.ShowCMD
         Dim Thread As New Threading.Thread(Sub() UpdateRAMBars())
         Thread.Start()
     End Sub
@@ -157,8 +33,8 @@
         If cmixVersionDropdown.Items.Contains(My.Settings.Version) Then cmixVersionDropdown.SelectedItem = My.Settings.Version
     End Sub
     Private Sub CompressRButton_CheckedChanged(sender As Object, e As EventArgs) Handles CompressRButton.CheckedChanged
-        InputFileMessage.Text = CompressInputMessage
-        OutputFileMessage.Text = CompressOutputMessage
+        InputFileMessage.Text = Translations.CompressInputMessage
+        OutputFileMessage.Text = Translations.CompressOutputMessage
         UseEngDictCheckbox.Enabled = True
         My.Settings.Compress = CompressRButton.Checked
         My.Settings.Save()
@@ -166,8 +42,8 @@
     End Sub
 
     Private Sub ExtractRButton_CheckedChanged(sender As Object, e As EventArgs) Handles ExtractRButton.CheckedChanged
-        InputFileMessage.Text = ExtractInputMessage
-        OutputFileMessage.Text = ExtractOutputMessage
+        InputFileMessage.Text = Translations.ExtractInputMessage
+        OutputFileMessage.Text = Translations.ExtractOutputMessage
         UseEngDictCheckbox.Enabled = True
         My.Settings.Extract = ExtractRButton.Checked
         My.Settings.Save()
@@ -175,8 +51,8 @@
     End Sub
 
     Private Sub PreprocessRButton_CheckedChanged(sender As Object, e As EventArgs) Handles PreprocessRButton.CheckedChanged
-        InputFileMessage.Text = PreprocessInputMessage
-        OutputFileMessage.Text = PreprocessOutputMessage
+        InputFileMessage.Text = Translations.PreprocessInputMessage
+        OutputFileMessage.Text = Translations.PreprocessOutputMessage
         My.Settings.Preprocess = PreprocessRButton.Checked
         My.Settings.Save()
         UseEngDictCheckbox.Checked = True
@@ -187,22 +63,22 @@
     Private Function CheckIfFileOrFolder(Optional PathToCheck As String = "") As String
         If My.Computer.FileSystem.FileExists(PathToCheck) Or PathToCheck = "" Then
             If CompressRButton.Checked Then
-                OutputFileMessage.Text = CompressOutputMessage
+                OutputFileMessage.Text = Translations.CompressOutputMessage
             ElseIf PreprocessRButton.Checked Then
-                OutputFileMessage.Text = PreprocessOutputMessage
+                OutputFileMessage.Text = Translations.PreprocessOutputMessage
             ElseIf ExtractRButton.Checked Then
-                OutputFileMessage.Text = ExtractOutputMessage
+                OutputFileMessage.Text = Translations.ExtractOutputMessage
             End If
             OutputFileTxt.Enabled = True
             BrowseButton2.Enabled = True
             If PathToCheck IsNot "" Then Return "File"
         ElseIf My.Computer.FileSystem.DirectoryExists(PathToCheck) Then
             If CompressRButton.Checked Then
-                OutputFileMessage.Text = CompressFolderSelectedMessage
+                OutputFileMessage.Text = Translations.CompressFolderSelectedMessage
             ElseIf PreprocessRButton.Checked Then
-                OutputFileMessage.Text = PreprocessFolderSelectedMessage
+                OutputFileMessage.Text = Translations.PreprocessFolderSelectedMessage
             ElseIf ExtractRButton.Checked Then
-                OutputFileMessage.Text = ExtractFolderSelectedMessage
+                OutputFileMessage.Text = Translations.ExtractFolderSelectedMessage
             End If
             OutputFileTxt.Enabled = False
             BrowseButton2.Enabled = False
@@ -247,7 +123,7 @@
         OutputFileTxt.Text = My.Computer.FileSystem.GetParentPath(Path) + "\" + IO.Path.GetFileNameWithoutExtension(Path)
     End Sub
 
-    Private Function GetInputNameAndUpdateForm(Path As String) As String
+    Public Function GetInputNameAndUpdateForm(Path As String) As String
         Dim CheckIfFile = CheckIfFileOrFolder(Path)
         If CheckIfFile = "File" Then
             Dim FileExtension As String = IO.Path.GetExtension(Path)
@@ -367,25 +243,29 @@
         Dim cmixProcess As Process
         cmixProcessInfo.FileName = My.Settings.Version + ".exe"
         cmixProcessInfo.Arguments = action + " """ + Input + """ """ + Output + """"
-        cmixProcessInfo.CreateNoWindow = True
-        cmixProcessInfo.RedirectStandardOutput = True
-        cmixProcessInfo.UseShellExecute = False
+        cmixProcessInfo.CreateNoWindow = Not ShowCMD.Checked
+        cmixProcessInfo.RedirectStandardOutput = Not ShowCMD.Checked
+        cmixProcessInfo.UseShellExecute = ShowCMD.Checked
         cmixProcess = Process.Start(cmixProcessInfo)
-        Dim currentOutput As String = String.Empty
-        While cmixProcess.HasExited = False
-            While cmixProcess.StandardOutput.EndOfStream = False
-                currentOutput = cmixProcess.StandardOutput.ReadLine
-                If currentOutput.Contains("progress") Or currentOutput.Contains("pretraining") Then
-                    If currentOutput.Contains("progress: 0%") Or currentOutput.Contains("pretraining: 0%") Then
-                        UpdateLog(currentOutput)
+        If Not ShowCMD.Checked Then
+            Dim currentOutput As String = String.Empty
+            While Not cmixProcess.HasExited
+                While Not cmixProcess.StandardOutput.EndOfStream
+                    currentOutput = cmixProcess.StandardOutput.Read
+                    If currentOutput.Contains("progress") Or currentOutput.Contains("pretraining") Then
+                        If currentOutput.Contains("progress: 0%") Or currentOutput.Contains("pretraining: 0%") Then
+                            UpdateLog(currentOutput)
+                        Else
+                            UpdateLog(currentOutput, True)
+                        End If
                     Else
-                        UpdateLog(currentOutput, True)
+                        UpdateLog(currentOutput)
                     End If
-                Else
-                    UpdateLog(currentOutput)
-                End If
+                End While
             End While
-        End While
+        Else
+            cmixProcess.WaitForExit()
+        End If
         UpdateLog("Finished processing file " + Input + vbCrLf + "End Time: " + Date.Now() + vbCrLf)
     End Sub
     Private Delegate Sub UpdateLogInvoker(message As String, ErasePreviousLine As Boolean)
@@ -435,7 +315,7 @@
                 Dim Thread As New Threading.Thread(Sub() ProcessThread())
                 Thread.Start()
             Else
-                MsgBox(TaskRunningString)
+                MsgBox(Translations.TaskRunningString)
             End If
         End If
     End Sub
@@ -458,7 +338,7 @@
             ProcessFolder(InputFileTxt.Text, ProcessAction)
         End If
         TaskRunning = False
-        MessageBox.Show(Finished)
+        MessageBox.Show(Translations.Finished)
     End Sub
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         Process.Start("https://github.com/byronknoll/cmix")
@@ -476,13 +356,13 @@
     Private Sub EnglishRButton_CheckedChanged(sender As Object, e As EventArgs) Handles EnglishRButton.CheckedChanged
         My.Settings.EnglishLanguage = EnglishRButton.Checked
         My.Settings.Save()
-        UpdateMessageStrings("English")
+        Translations.UpdateMessageStrings("English")
     End Sub
 
     Private Sub SpanishRButton_CheckedChanged(sender As Object, e As EventArgs) Handles SpanishRButton.CheckedChanged
         My.Settings.SpanishLanguage = SpanishRButton.Checked
         My.Settings.Save()
-        UpdateMessageStrings("Spanish")
+        Translations.UpdateMessageStrings("Spanish")
     End Sub
 
     Private Sub SaveLogButton_Click(sender As Object, e As EventArgs) Handles SaveLogButton.Click
@@ -495,7 +375,7 @@
         If DialogResult.OK Then
             If SaveLogFile.FileName = String.Empty = False Then
                 My.Computer.FileSystem.WriteAllText(SaveLogFile.FileName, ProgressLog.Text, False)
-                MsgBox(LogSaved)
+                MsgBox(Translations.LogSaved)
             End If
         End If
     End Sub
@@ -519,7 +399,7 @@
     Private Sub UpdateRAMBars()
         Dim TotalSystemRAM As Double = My.Computer.Info.TotalPhysicalMemory / 1024 / 1024 / 1024
         TotalRAM.GetCurrentParent.Invoke(Sub()
-                                             TotalRAM.Text = String.Format(TotalRAMString + " {0:N2} GB", TotalSystemRAM)
+                                             TotalRAM.Text = String.Format(Translations.TotalRAMString + " {0:N2} GB", TotalSystemRAM)
                                          End Sub)
         RAMBar.GetCurrentParent.Invoke(Sub()
                                            RAMBar.Maximum = TotalSystemRAM
@@ -532,10 +412,10 @@
                 AvailableSystemRAM = My.Computer.Info.AvailablePhysicalMemory / 1024 / 1024 / 1024
                 UsedSystemRAM = TotalSystemRAM - AvailableSystemRAM
                 AvailableRAM.GetCurrentParent.Invoke(Sub()
-                                                         AvailableRAM.Text = String.Format(AvailableRAMString + " {0:N2} GB", AvailableSystemRAM)
+                                                         AvailableRAM.Text = String.Format(Translations.AvailableRAMString + " {0:N2} GB", AvailableSystemRAM)
                                                      End Sub)
                 UsedRAM.GetCurrentParent.Invoke(Sub()
-                                                    UsedRAM.Text = String.Format(UsedRAMString + " {0:N2} GB", UsedSystemRAM)
+                                                    UsedRAM.Text = String.Format(Translations.UsedRAMString + " {0:N2} GB", UsedSystemRAM)
                                                 End Sub)
                 RAMBar.GetCurrentParent.Invoke(Sub()
                                                    RAMBar.Value = UsedSystemRAM
@@ -549,5 +429,10 @@
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         ExitSoftware = True
+    End Sub
+
+    Private Sub ShowCMD_CheckedChanged(sender As Object, e As EventArgs) Handles ShowCMD.CheckedChanged
+        My.Settings.ShowCMD = ShowCMD.Checked
+        My.Settings.Save()
     End Sub
 End Class
