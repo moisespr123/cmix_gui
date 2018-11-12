@@ -131,15 +131,30 @@
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CheckExes()
         CompressRButton.Checked = My.Settings.Compress
         ExtractRButton.Checked = My.Settings.Extract
         PreprocessRButton.Checked = My.Settings.Preprocess
-        cmixVersionDropdown.SelectedItem = My.Settings.Version
         UseEngDictCheckbox.Checked = My.Settings.UseEngDict
         EnglishRButton.Checked = My.Settings.EnglishLanguage
         SpanishRButton.Checked = My.Settings.SpanishLanguage
         Dim Thread As New Threading.Thread(Sub() UpdateRAMBars())
         Thread.Start()
+    End Sub
+
+    Private Sub CheckExes()
+        If My.Computer.FileSystem.FileExists("cmix_v16d.exe") Then cmixVersionDropdown.Items.Add("cmix_v16d")
+        If My.Computer.FileSystem.FileExists("cmix_v16c.exe") Then cmixVersionDropdown.Items.Add("cmix_v16c")
+        If My.Computer.FileSystem.FileExists("cmix_v16b.exe") Then cmixVersionDropdown.Items.Add("cmix_v16b")
+        If My.Computer.FileSystem.FileExists("cmix_v16a.exe") Then cmixVersionDropdown.Items.Add("cmix_v16a")
+        If My.Computer.FileSystem.FileExists("cmix_v15i.exe") Then cmixVersionDropdown.Items.Add("cmix_v15i")
+        If My.Computer.FileSystem.FileExists("cmix_v15g.exe") Then cmixVersionDropdown.Items.Add("cmix_v15g")
+        If My.Computer.FileSystem.FileExists("cmix_v15f.exe") Then cmixVersionDropdown.Items.Add("cmix_v15f")
+        If My.Computer.FileSystem.FileExists("cmix_v15e.exe") Then cmixVersionDropdown.Items.Add("cmix_v15e")
+        If My.Computer.FileSystem.FileExists("cmix_v15d.exe") Then cmixVersionDropdown.Items.Add("cmix_v15d")
+        If My.Computer.FileSystem.FileExists("cmix_v15c.exe") Then cmixVersionDropdown.Items.Add("cmix_v15c")
+        If My.Computer.FileSystem.FileExists("cmix_v15b.exe") Then cmixVersionDropdown.Items.Add("cmix_v15b")
+        If cmixVersionDropdown.Items.Contains(My.Settings.Version) Then cmixVersionDropdown.SelectedItem = My.Settings.Version
     End Sub
     Private Sub CompressRButton_CheckedChanged(sender As Object, e As EventArgs) Handles CompressRButton.CheckedChanged
         InputFileMessage.Text = CompressInputMessage
