@@ -1,3 +1,8 @@
+v1.5
+-Adds support for cmix_v16e
+-Log now displays cmix output
+-Shows original and compressed file sizes after compression
+
 v1.4r7 (11/12/2018)
 -Adds support for cmix_v16c and cmix_v16d
 

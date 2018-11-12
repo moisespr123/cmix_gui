@@ -231,9 +231,9 @@ Partial Class Form1
         Me.VersionLabel.AutoSize = true
         Me.VersionLabel.Location = New System.Drawing.Point(396, 251)
         Me.VersionLabel.Name = "VersionLabel"
-        Me.VersionLabel.Size = New System.Drawing.Size(59, 13)
+        Me.VersionLabel.Size = New System.Drawing.Size(50, 13)
         Me.VersionLabel.TabIndex = 14
-        Me.VersionLabel.Text = "GUI v1.4r7"
+        Me.VersionLabel.Text = "GUI v1.5"
         '
         'BrowseFolder
         '
