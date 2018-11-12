@@ -359,8 +359,6 @@ Partial Class Form1
         'ShowCMD
         '
         Me.ShowCMD.AutoSize = true
-        Me.ShowCMD.Checked = true
-        Me.ShowCMD.CheckState = System.Windows.Forms.CheckState.Checked
         Me.ShowCMD.Location = New System.Drawing.Point(183, 214)
         Me.ShowCMD.Name = "ShowCMD"
         Me.ShowCMD.Size = New System.Drawing.Size(80, 17)

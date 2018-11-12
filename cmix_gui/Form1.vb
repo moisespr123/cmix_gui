@@ -19,6 +19,7 @@
     End Sub
 
     Private Sub CheckExes()
+        If My.Computer.FileSystem.FileExists("cmix_v16e.exe") Then cmixVersionDropdown.Items.Add("cmix_v16e")
         If My.Computer.FileSystem.FileExists("cmix_v16d.exe") Then cmixVersionDropdown.Items.Add("cmix_v16d")
         If My.Computer.FileSystem.FileExists("cmix_v16c.exe") Then cmixVersionDropdown.Items.Add("cmix_v16c")
         If My.Computer.FileSystem.FileExists("cmix_v16b.exe") Then cmixVersionDropdown.Items.Add("cmix_v16b")
@@ -112,6 +113,8 @@
             cmixVersionDropdown.SelectedItem = "cmix_v16c"
         ElseIf Extension.Contains("16d") Then
             cmixVersionDropdown.SelectedItem = "cmix_v16d"
+        ElseIf Extension.Contains("16e") Then
+            cmixVersionDropdown.SelectedItem = "cmix_v16e"
         End If
     End Sub
 
@@ -212,6 +215,8 @@
             cmix_version = "16c"
         ElseIf cmixVersionDropdown.SelectedItem = "cmix_v16d" Then
             cmix_version = "16d"
+        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v16e" Then
+            cmix_version = "16e"
         End If
         If OutputFileName IsNot String.Empty Then
             SetOutputFilename()
@@ -274,7 +279,10 @@
         Else
             cmixProcess.WaitForExit()
         End If
+        UpdateLog("----------")
         UpdateLog("Finished processing file " + Input + vbCrLf + "End Time: " + Date.Now() + vbCrLf)
+        UpdateLog(String.Format("Input file size: {0:N2} MB ", My.Computer.FileSystem.GetFileInfo(Input).Length / 1024 / 1024))
+        UpdateLog(String.Format("Compressed file size: {0:N2} MB ", My.Computer.FileSystem.GetFileInfo(Output).Length / 1024 / 1024))
     End Sub
     Private Delegate Sub UpdateLogInvoker(message As String, ErasePreviousLine As Boolean)
     Private Sub UpdateLog(message As String, Optional ErasePreviousLine As Boolean = False)
