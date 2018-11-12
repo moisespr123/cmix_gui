@@ -251,27 +251,25 @@
         Dim WroteProgress As Boolean = False
         If Not ShowCMD.Checked Then
             Dim currentOutput As String = String.Empty
-            While Not cmixProcess.HasExited
-                While Not cmixProcess.StandardError.EndOfStream
-                    currentOutput = cmixProcess.StandardError.ReadLine
-                    If currentOutput.Contains("pretraining") Then
-                        If Not WrotePretraining Then
-                            UpdateLog(currentOutput)
-                            WrotePretraining = True
-                        Else
-                            UpdateLog(currentOutput, True)
-                        End If
-                    ElseIf currentOutput.Contains("progress") Then
-                        If Not WroteProgress Then
-                            UpdateLog(currentOutput)
-                            WroteProgress = True
-                        Else
-                            UpdateLog(currentOutput, True)
-                        End If
-                    Else
+            While Not cmixProcess.HasExited Or Not cmixProcess.StandardError.EndOfStream
+                currentOutput = cmixProcess.StandardError.ReadLine
+                If currentOutput.Contains("pretraining") Then
+                    If Not WrotePretraining Then
                         UpdateLog(currentOutput)
+                        WrotePretraining = True
+                    Else
+                        UpdateLog(currentOutput, True)
                     End If
-                End While
+                ElseIf currentOutput.Contains("progress") Then
+                    If Not WroteProgress Then
+                        UpdateLog(currentOutput)
+                        WroteProgress = True
+                    Else
+                        UpdateLog(currentOutput, True)
+                    End If
+                Else
+                    UpdateLog(currentOutput)
+                End If
             End While
         Else
             cmixProcess.WaitForExit()
