@@ -270,25 +270,27 @@
         Dim WroteProgress As Boolean = False
         If Not ShowCMD.Checked Then
             Dim currentOutput As String = String.Empty
-            While Not cmixProcess.HasExited Or Not cmixProcess.StandardError.EndOfStream
-                currentOutput = cmixProcess.StandardError.ReadLine
-                If currentOutput.Contains("pretraining") Then
-                    If Not WrotePretraining Then
-                        UpdateLog(currentOutput)
-                        WrotePretraining = True
+            While Not cmixProcess.HasExited
+                While Not cmixProcess.StandardError.EndOfStream
+                    currentOutput = cmixProcess.StandardError.ReadLine
+                    If currentOutput.Contains("pretraining") Then
+                        If Not WrotePretraining Then
+                            UpdateLog(currentOutput)
+                            WrotePretraining = True
+                        Else
+                            UpdateLog(currentOutput, True)
+                        End If
+                    ElseIf currentOutput.Contains("progress") Then
+                        If Not WroteProgress Then
+                            UpdateLog(currentOutput)
+                            WroteProgress = True
+                        Else
+                            UpdateLog(currentOutput, True)
+                        End If
                     Else
-                        UpdateLog(currentOutput, True)
-                    End If
-                ElseIf currentOutput.Contains("progress") Then
-                    If Not WroteProgress Then
                         UpdateLog(currentOutput)
-                        WroteProgress = True
-                    Else
-                        UpdateLog(currentOutput, True)
                     End If
-                Else
-                    UpdateLog(currentOutput)
-                End If
+                End While
             End While
         Else
             cmixProcess.WaitForExit()
@@ -306,7 +308,7 @@
             If ErasePreviousLine Then
                 ProgressLog.Text = ProgressLog.Text.Replace(ProgressLog.Lines(ProgressLog.Lines.Count - 2), message.Replace(vbCrLf, ""))
             Else
-                If message = String.Empty = False And message = vbCrLf = False Then
+                If Not message = String.Empty And Not message = vbCrLf Then
                     ProgressLog.AppendText(message + vbCrLf)
                 End If
             End If
@@ -340,7 +342,7 @@
 
     Private Sub StartButton_Click(sender As Object, e As EventArgs) Handles StartButton.Click
         If InputFileTxt.Text IsNot String.Empty Then
-            If TaskRunning = False Then
+            If Not TaskRunning Then
                 TaskRunning = True
                 Dim Thread As New Threading.Thread(Sub() ProcessThread())
                 Thread.Start()
@@ -403,7 +405,7 @@
         }
         Dim dialogResult As DialogResult = SaveLogFile.ShowDialog
         If DialogResult.OK Then
-            If SaveLogFile.FileName = String.Empty = False Then
+            If Not SaveLogFile.FileName = String.Empty Then
                 My.Computer.FileSystem.WriteAllText(SaveLogFile.FileName, ProgressLog.Text, False)
                 MsgBox(Translations.LogSaved)
             End If
@@ -423,7 +425,7 @@
         End If
     End Sub
     Private Sub ClearLogButton_Click(sender As Object, e As EventArgs) Handles ClearLogButton.Click
-        If TaskRunning = False Then ClearLog()
+        If Not TaskRunning Then ClearLog()
     End Sub
 
     Private Sub UpdateRAMBars()
