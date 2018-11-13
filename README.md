@@ -13,10 +13,10 @@ Software written with Visual Studio 2017 in the Visual Basic .NET language
 # Screenshot
 
 English GUI Screenshot:  
-![GUI English Screenshot](https://ipfs.moisescardona.me/ipfs/QmP4h5oXWxWw4mP8ZR8ScaixnvhTfwkeTbz2iipLLRQEbe)
+![GUI English Screenshot](https://ipfs.moisescardona.me/ipfs/QmP1tcrokcXY7f43ToCmw7Tk6LmD7cFk1PsX2KCaBcPQMQ)
 
 Spanish GUI Screenshot:  
-![GUI Spanish Screenshot](https://ipfs.moisescardona.me/ipfs/QmNpbiuMrqZ3DdZhSvrwrGeAZvGCaZJURVbrKGqyj1gCj9)
+![GUI Spanish Screenshot](https://ipfs.moisescardona.me/ipfs/QmYnbqzGTcNphjRwQYZV7ubTk5EMg3RkjL6UTsCdWsQHJN)
 
 # How to use?
 Simply, go to the release section and download the latest version. Then, execute **cmix_gui.exe**.
