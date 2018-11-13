@@ -297,8 +297,16 @@
         End If
         UpdateLog("----------")
         UpdateLog("Finished processing file " + Input + vbCrLf + "End Time: " + Date.Now() + vbCrLf)
+        Dim OutputFileMessage As String = String.Empty
+        If action.Contains("-c") Then
+            OutputFileMessage = "Compressed"
+        ElseIf action.Contains("-d") Then
+            OutputFileMessage = "Extracted"
+        Else
+            OutputFileMessage = "Preprocessed"
+        End If
         UpdateLog(String.Format("Input file size: {0:N2} MB ", My.Computer.FileSystem.GetFileInfo(Input).Length / 1024 / 1024))
-        UpdateLog(String.Format("Compressed file size: {0:N2} MB ", My.Computer.FileSystem.GetFileInfo(Output).Length / 1024 / 1024))
+        UpdateLog(String.Format(OutputFileMessage + " file size: {0:N2} MB ", My.Computer.FileSystem.GetFileInfo(Output).Length / 1024 / 1024))
     End Sub
     Private Delegate Sub UpdateLogInvoker(message As String, ErasePreviousLine As Boolean)
     Private Sub UpdateLog(message As String, Optional ErasePreviousLine As Boolean = False)
