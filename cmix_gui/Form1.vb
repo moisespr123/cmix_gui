@@ -248,6 +248,12 @@
         GetInputNameAndUpdateForm(InputFileTxt.Text)
     End Sub
 
+    Private Sub UpdateLogEventHandler(sender As Object, e As DataReceivedEventArgs)
+        If Not e.Data = Nothing Then
+            UpdateLog(e.Data)
+        End If
+    End Sub
+
     Private Sub Run_cmix(Input As String, Output As String, action As String)
         If action.Contains("-c") Then
             UpdateLog("Compressing file " + Input)
@@ -258,44 +264,25 @@
         End If
         UpdateLog("Start time: " & Date.Now())
         UpdateLog("----------")
-        Dim cmixProcessInfo As New ProcessStartInfo
-        Dim cmixProcess As Process
-        cmixProcessInfo.FileName = My.Settings.Version + ".exe"
-        cmixProcessInfo.Arguments = action + " """ + Input + """ """ + Output + """"
-        cmixProcessInfo.CreateNoWindow = Not ShowCMD.Checked
-        cmixProcessInfo.RedirectStandardError = Not ShowCMD.Checked
-        cmixProcessInfo.UseShellExecute = ShowCMD.Checked
-        cmixProcess = Process.Start(cmixProcessInfo)
-        Dim WrotePretraining As Boolean = False
-        Dim WroteProgress As Boolean = False
-        If Not ShowCMD.Checked Then
-            Dim currentOutput As String = String.Empty
-            While Not cmixProcess.HasExited
-                While Not cmixProcess.StandardError.EndOfStream
-                    currentOutput = cmixProcess.StandardError.ReadLine
-                    If currentOutput.Contains("pretraining") Then
-                        If Not WrotePretraining Then
-                            UpdateLog(currentOutput)
-                            WrotePretraining = True
-                        Else
-                            UpdateLog(currentOutput, True)
-                        End If
-                    ElseIf currentOutput.Contains("progress") Then
-                        If Not WroteProgress Then
-                            UpdateLog(currentOutput)
-                            WroteProgress = True
-                        Else
-                            UpdateLog(currentOutput, True)
-                        End If
-                    Else
-                        UpdateLog(currentOutput)
-                    End If
-                End While
-            End While
-        Else
-            cmixProcess.WaitForExit()
-        End If
-        UpdateLog("----------")
+        Using process As New Process
+            process.StartInfo.FileName = My.Settings.Version + ".exe"
+            process.StartInfo.Arguments = action + " """ + Input + """ """ + Output + """"
+            process.StartInfo.CreateNoWindow = Not ShowCMD.Checked
+            process.StartInfo.RedirectStandardOutput = Not ShowCMD.Checked
+            process.StartInfo.RedirectStandardError = Not ShowCMD.Checked
+            process.StartInfo.UseShellExecute = ShowCMD.Checked
+            If Not ShowCMD.Checked Then
+                AddHandler process.OutputDataReceived, New DataReceivedEventHandler(AddressOf UpdateLogEventHandler)
+                AddHandler process.ErrorDataReceived, New DataReceivedEventHandler(AddressOf UpdateLogEventHandler)
+            End If
+            process.Start()
+            If Not ShowCMD.Checked Then
+                process.BeginOutputReadLine()
+                process.BeginErrorReadLine()
+            End If
+            process.WaitForExit()
+            UpdateLog("----------")
+        End Using
         UpdateLog("Finished processing file " + Input + vbCrLf + "End Time: " + Date.Now() + vbCrLf)
         Dim OutputFileMessage As String = String.Empty
         If action.Contains("-c") Then
@@ -308,18 +295,12 @@
         UpdateLog(String.Format("Input file size: {0:N2} MB ", My.Computer.FileSystem.GetFileInfo(Input).Length / 1024 / 1024))
         UpdateLog(String.Format(OutputFileMessage + " file size: {0:N2} MB ", My.Computer.FileSystem.GetFileInfo(Output).Length / 1024 / 1024))
     End Sub
-    Private Delegate Sub UpdateLogInvoker(message As String, ErasePreviousLine As Boolean)
-    Private Sub UpdateLog(message As String, Optional ErasePreviousLine As Boolean = False)
+    Private Delegate Sub UpdateLogInvoker(message As String)
+    Private Sub UpdateLog(message As String)
         If ProgressLog.InvokeRequired Then
-            ProgressLog.Invoke(New UpdateLogInvoker(AddressOf UpdateLog), message, ErasePreviousLine)
+            ProgressLog.Invoke(New UpdateLogInvoker(AddressOf UpdateLog), message)
         Else
-            If ErasePreviousLine Then
-                ProgressLog.Text = ProgressLog.Text.Replace(ProgressLog.Lines(ProgressLog.Lines.Count - 2), message.Replace(vbCrLf, ""))
-            Else
-                If Not message = String.Empty And Not message = vbCrLf Then
-                    ProgressLog.AppendText(message + vbCrLf)
-                End If
-            End If
+            ProgressLog.AppendText(Date.Now().ToString() + " || " + message + vbCrLf)
             ProgressLog.SelectionStart = ProgressLog.Text.Length - 1
             ProgressLog.ScrollToCaret()
         End If
