@@ -4,6 +4,23 @@
     Private dict As String = String.Empty
     Private TaskRunning As Boolean = False
     Private ExitSoftware As Boolean = False
+    Private cmixVersionDictionary As Dictionary(Of String, String) = New Dictionary(Of String, String) From {
+        {"15b", "cmix_v15b"},
+        {"15c", "cmix_v15c"},
+        {"15d", "cmix_v15d"},
+        {"15e", "cmix_v15e"},
+        {"15f", "cmix_v15f"},
+        {"15g", "cmix_v15g"},
+        {"15h", "cmix_v15h"},
+        {"15i", "cmix_v15i"},
+        {"16a", "cmix_v16a"},
+        {"16b", "cmix_v16b"},
+        {"16c", "cmix_v16c"},
+        {"16d", "cmix_v16d"},
+        {"16e", "cmix_v16e"},
+        {"16f", "cmix_v16f"}
+        }
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         IO.Directory.SetCurrentDirectory(IO.Path.GetDirectoryName(Process.GetCurrentProcess.MainModule.FileName))
@@ -25,19 +42,9 @@
     End Sub
 
     Private Sub CheckExes()
-        If My.Computer.FileSystem.FileExists("cmix_v16f.exe") Then cmixVersionDropdown.Items.Add("cmix_v16f")
-        If My.Computer.FileSystem.FileExists("cmix_v16e.exe") Then cmixVersionDropdown.Items.Add("cmix_v16e")
-        If My.Computer.FileSystem.FileExists("cmix_v16d.exe") Then cmixVersionDropdown.Items.Add("cmix_v16d")
-        If My.Computer.FileSystem.FileExists("cmix_v16c.exe") Then cmixVersionDropdown.Items.Add("cmix_v16c")
-        If My.Computer.FileSystem.FileExists("cmix_v16b.exe") Then cmixVersionDropdown.Items.Add("cmix_v16b")
-        If My.Computer.FileSystem.FileExists("cmix_v16a.exe") Then cmixVersionDropdown.Items.Add("cmix_v16a")
-        If My.Computer.FileSystem.FileExists("cmix_v15i.exe") Then cmixVersionDropdown.Items.Add("cmix_v15i")
-        If My.Computer.FileSystem.FileExists("cmix_v15g.exe") Then cmixVersionDropdown.Items.Add("cmix_v15g")
-        If My.Computer.FileSystem.FileExists("cmix_v15f.exe") Then cmixVersionDropdown.Items.Add("cmix_v15f")
-        If My.Computer.FileSystem.FileExists("cmix_v15e.exe") Then cmixVersionDropdown.Items.Add("cmix_v15e")
-        If My.Computer.FileSystem.FileExists("cmix_v15d.exe") Then cmixVersionDropdown.Items.Add("cmix_v15d")
-        If My.Computer.FileSystem.FileExists("cmix_v15c.exe") Then cmixVersionDropdown.Items.Add("cmix_v15c")
-        If My.Computer.FileSystem.FileExists("cmix_v15b.exe") Then cmixVersionDropdown.Items.Add("cmix_v15b")
+        For Each value As String In cmixVersionDictionary.Values
+            If My.Computer.FileSystem.FileExists(value + ".exe") Then cmixVersionDropdown.Items.Add(value)
+        Next
         If Not My.Computer.FileSystem.FileExists("english.dic") Then UseEngDictCheckbox.Enabled = False
         If cmixVersionDropdown.Items.Contains(My.Settings.Version) Then cmixVersionDropdown.SelectedItem = My.Settings.Version
     End Sub
@@ -75,7 +82,7 @@
                 OutputFileMessage.Text = Translations.CompressOutputMessage
             ElseIf PreprocessRButton.Checked Then
                 OutputFileMessage.Text = Translations.PreprocessOutputMessage
-            ElseIf ExtractRButton.Checked Then
+            Else
                 OutputFileMessage.Text = Translations.ExtractOutputMessage
             End If
             OutputFileTxt.Enabled = True
@@ -86,7 +93,7 @@
                 OutputFileMessage.Text = Translations.CompressFolderSelectedMessage
             ElseIf PreprocessRButton.Checked Then
                 OutputFileMessage.Text = Translations.PreprocessFolderSelectedMessage
-            ElseIf ExtractRButton.Checked Then
+            Else
                 OutputFileMessage.Text = Translations.ExtractFolderSelectedMessage
             End If
             OutputFileTxt.Enabled = False
@@ -97,35 +104,11 @@
     End Function
 
     Private Sub SetVersion(Extension As String)
-        If Extension.Contains("15b") Then
-            cmixVersionDropdown.SelectedItem = "cmix_v15b"
-        ElseIf Extension.Contains("15c") Then
-            cmixVersionDropdown.SelectedItem = "cmix_v15c"
-        ElseIf Extension.Contains("15d") Then
-            cmixVersionDropdown.SelectedItem = "cmix_v15d"
-        ElseIf Extension.Contains("15e") Then
-            cmixVersionDropdown.SelectedItem = "cmix_v15e"
-        ElseIf Extension.Contains("15f") Then
-            cmixVersionDropdown.SelectedItem = "cmix_v15f"
-        ElseIf Extension.Contains("15g") Then
-            cmixVersionDropdown.SelectedItem = "cmix_v15g"
-        ElseIf Extension.Contains("15h") Then
-            cmixVersionDropdown.SelectedItem = "cmix_v15h"
-        ElseIf Extension.Contains("15i") Then
-            cmixVersionDropdown.SelectedItem = "cmix_v15i"
-        ElseIf Extension.Contains("16a") Then
-            cmixVersionDropdown.SelectedItem = "cmix_v16a"
-        ElseIf Extension.Contains("16b") Then
-            cmixVersionDropdown.SelectedItem = "cmix_v16b"
-        ElseIf Extension.Contains("16c") Then
-            cmixVersionDropdown.SelectedItem = "cmix_v16c"
-        ElseIf Extension.Contains("16d") Then
-            cmixVersionDropdown.SelectedItem = "cmix_v16d"
-        ElseIf Extension.Contains("16e") Then
-            cmixVersionDropdown.SelectedItem = "cmix_v16e"
-        ElseIf Extension.Contains("16f") Then
-            cmixVersionDropdown.SelectedItem = "cmix_v16f"
-        End If
+        For Each item As KeyValuePair(Of String, String) In cmixVersionDictionary
+            If Extension.Contains(item.Key) Then
+                cmixVersionDropdown.SelectedItem = item.Value
+            End If
+        Next
     End Sub
 
     Private Function SetDict(Extension As String) As Boolean
@@ -214,35 +197,11 @@
     Private Sub CmixVersionDropdown_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmixVersionDropdown.SelectedIndexChanged
         My.Settings.Version = cmixVersionDropdown.SelectedItem
         My.Settings.Save()
-        If cmixVersionDropdown.SelectedItem = "cmix_v15b" Then
-            cmix_version = "15b"
-        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15c" Then
-            cmix_version = "15c"
-        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15d" Then
-            cmix_version = "15d"
-        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15e" Then
-            cmix_version = "15e"
-        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15f" Then
-            cmix_version = "15f"
-        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15g" Then
-            cmix_version = "15g"
-        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15h" Then
-            cmix_version = "15h"
-        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v15i" Then
-            cmix_version = "15i"
-        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v16a" Then
-            cmix_version = "16a"
-        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v16b" Then
-            cmix_version = "16b"
-        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v16c" Then
-            cmix_version = "16c"
-        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v16d" Then
-            cmix_version = "16d"
-        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v16e" Then
-            cmix_version = "16e"
-        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v16f" Then
-            cmix_version = "16f"
-        End If
+        For Each item As KeyValuePair(Of String, String) In cmixVersionDictionary
+            If cmixVersionDropdown.SelectedItem = item.Value Then
+                cmix_version = item.Key
+            End If
+        Next
         If OutputFileName IsNot String.Empty Then
             SetOutputFilename()
         End If
