@@ -6,6 +6,7 @@
     Private ExitSoftware As Boolean = False
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        IO.Directory.SetCurrentDirectory(IO.Path.GetDirectoryName(Process.GetCurrentProcess.MainModule.FileName))
         CheckExes()
         CompressRButton.Checked = My.Settings.Compress
         ExtractRButton.Checked = My.Settings.Extract
@@ -14,11 +15,17 @@
         EnglishRButton.Checked = My.Settings.EnglishLanguage
         SpanishRButton.Checked = My.Settings.SpanishLanguage
         ShowCMD.Checked = My.Settings.ShowCMD
+        Dim vars As String() = Environment.GetCommandLineArgs
+        If vars.Count > 1 Then
+            InputFileTxt.Text = vars(1)
+            GetInputNameAndUpdateForm(InputFileTxt.Text)
+        End If
         Dim Thread As New Threading.Thread(Sub() UpdateRAMBars())
         Thread.Start()
     End Sub
 
     Private Sub CheckExes()
+        If My.Computer.FileSystem.FileExists("cmix_v16f.exe") Then cmixVersionDropdown.Items.Add("cmix_v16f")
         If My.Computer.FileSystem.FileExists("cmix_v16e.exe") Then cmixVersionDropdown.Items.Add("cmix_v16e")
         If My.Computer.FileSystem.FileExists("cmix_v16d.exe") Then cmixVersionDropdown.Items.Add("cmix_v16d")
         If My.Computer.FileSystem.FileExists("cmix_v16c.exe") Then cmixVersionDropdown.Items.Add("cmix_v16c")
@@ -116,6 +123,8 @@
             cmixVersionDropdown.SelectedItem = "cmix_v16d"
         ElseIf Extension.Contains("16e") Then
             cmixVersionDropdown.SelectedItem = "cmix_v16e"
+        ElseIf Extension.Contains("16f") Then
+            cmixVersionDropdown.SelectedItem = "cmix_v16f"
         End If
     End Sub
 
@@ -231,6 +240,8 @@
             cmix_version = "16d"
         ElseIf cmixVersionDropdown.SelectedItem = "cmix_v16e" Then
             cmix_version = "16e"
+        ElseIf cmixVersionDropdown.SelectedItem = "cmix_v16f" Then
+            cmix_version = "16f"
         End If
         If OutputFileName IsNot String.Empty Then
             SetOutputFilename()

@@ -1,3 +1,8 @@
+v1.6 (1/13/2019)
+-Adds support for cmix_v16f
+-Can now drag and drop a file into the software icon
+-Real-time log improvements
+
 v1.5 (11/13/2018)
 -Adds support for cmix_v16e
 -Log now displays cmix output
