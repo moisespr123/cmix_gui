@@ -80,7 +80,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("cmix_v16f")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("cmix_v17")>  _
         Public Property Version() As String
             Get
                 Return CType(Me("Version"),String)

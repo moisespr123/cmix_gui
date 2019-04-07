@@ -18,7 +18,8 @@
         {"16c", "cmix_v16c"},
         {"16d", "cmix_v16d"},
         {"16e", "cmix_v16e"},
-        {"16f", "cmix_v16f"}
+        {"16f", "cmix_v16f"},
+        {"17", "cmix_v17"}
         }
 
 
@@ -42,16 +43,23 @@
     End Sub
 
     Private Sub CheckExes()
-        For Each value As String In cmixVersionDictionary.Values
-            If My.Computer.FileSystem.FileExists(value + ".exe") Then cmixVersionDropdown.Items.Add(value)
+        For Each item As KeyValuePair(Of String, String) In cmixVersionDictionary
+            If My.Computer.FileSystem.FileExists("exes\" + item.Key + "\" + item.Value + ".exe") Then cmixVersionDropdown.Items.Add(item.Value)
         Next
-        If Not My.Computer.FileSystem.FileExists("english.dic") Then UseEngDictCheckbox.Enabled = False
         If cmixVersionDropdown.Items.Contains(My.Settings.Version) Then cmixVersionDropdown.SelectedItem = My.Settings.Version
+    End Sub
+    Private Sub CheckDictionaryFile()
+        If IO.File.Exists("exes\" + cmix_version + "\english.dic") Then
+            UseEngDictCheckbox.Enabled = True
+        Else
+            UseEngDictCheckbox.Enabled = False
+            UseEngDictCheckbox.Checked = False
+        End If
     End Sub
     Private Sub CompressRButton_CheckedChanged(sender As Object, e As EventArgs) Handles CompressRButton.CheckedChanged
         InputFileMessage.Text = Translations.CompressInputMessage
         OutputFileMessage.Text = Translations.CompressOutputMessage
-        If My.Computer.FileSystem.FileExists("english.dic") Then UseEngDictCheckbox.Enabled = True
+        CheckDictionaryFile()
         My.Settings.Compress = CompressRButton.Checked
         My.Settings.Save()
         If InputFileTxt.Text IsNot String.Empty Then GetInputNameAndUpdateForm(InputFileTxt.Text)
@@ -60,7 +68,7 @@
     Private Sub ExtractRButton_CheckedChanged(sender As Object, e As EventArgs) Handles ExtractRButton.CheckedChanged
         InputFileMessage.Text = Translations.ExtractInputMessage
         OutputFileMessage.Text = Translations.ExtractOutputMessage
-        If My.Computer.FileSystem.FileExists("english.dic") Then UseEngDictCheckbox.Enabled = True
+        CheckDictionaryFile()
         My.Settings.Extract = ExtractRButton.Checked
         My.Settings.Save()
         If InputFileTxt.Text IsNot String.Empty Then GetInputNameAndUpdateForm(InputFileTxt.Text)
@@ -113,12 +121,13 @@
 
     Private Function SetDict(Extension As String) As Boolean
         If Extension.Contains("_dict") Then
-            If My.Computer.FileSystem.FileExists("english.dic") Then
+            If IO.File.Exists("exes\" + cmix_version + "\english.dic") Then
                 UseEngDictCheckbox.Checked = True
             Else
                 MsgBox("english.dic is missing. Cannot use dictionary.")
                 InputFileTxt.Text = ""
                 OutputFileTxt.Text = ""
+                UseEngDictCheckbox.Checked = False
                 Return False
             End If
         Else
@@ -200,6 +209,7 @@
         For Each item As KeyValuePair(Of String, String) In cmixVersionDictionary
             If cmixVersionDropdown.SelectedItem = item.Value Then
                 cmix_version = item.Key
+                CheckDictionaryFile()
             End If
         Next
         If OutputFileName IsNot String.Empty Then
@@ -235,7 +245,8 @@
         UpdateLog("Start time: " & Date.Now())
         UpdateLog("----------")
         Using process As New Process
-            process.StartInfo.FileName = My.Settings.Version + ".exe"
+            process.StartInfo.WorkingDirectory = "exes\" + cmix_version
+            process.StartInfo.FileName = "exes\" + cmix_version + "\" + My.Settings.Version + ".exe"
             process.StartInfo.Arguments = action + " """ + Input + """ """ + Output + """"
             process.StartInfo.CreateNoWindow = Not ShowCMD.Checked
             process.StartInfo.RedirectStandardOutput = Not ShowCMD.Checked
