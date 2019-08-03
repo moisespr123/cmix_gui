@@ -233,7 +233,7 @@ Partial Class Form1
         Me.VersionLabel.Name = "VersionLabel"
         Me.VersionLabel.Size = New System.Drawing.Size(50, 13)
         Me.VersionLabel.TabIndex = 14
-        Me.VersionLabel.Text = "GUI v1.7"
+        Me.VersionLabel.Text = "GUI v1.8"
         '
         'BrowseFolder
         '
@@ -242,17 +242,17 @@ Partial Class Form1
         Me.BrowseFolder.Size = New System.Drawing.Size(89, 23)
         Me.BrowseFolder.TabIndex = 5
         Me.BrowseFolder.Text = "Browse Folder"
-        Me.BrowseFolder.UseVisualStyleBackColor = True
+        Me.BrowseFolder.UseVisualStyleBackColor = true
         '
         'UseEngDictCheckbox
         '
-        Me.UseEngDictCheckbox.AutoSize = True
+        Me.UseEngDictCheckbox.AutoSize = true
         Me.UseEngDictCheckbox.Location = New System.Drawing.Point(12, 192)
         Me.UseEngDictCheckbox.Name = "UseEngDictCheckbox"
         Me.UseEngDictCheckbox.Size = New System.Drawing.Size(148, 17)
         Me.UseEngDictCheckbox.TabIndex = 9
         Me.UseEngDictCheckbox.Text = "Use the English dictionary"
-        Me.UseEngDictCheckbox.UseVisualStyleBackColor = True
+        Me.UseEngDictCheckbox.UseVisualStyleBackColor = true
         '
         'GroupBox2
         '
@@ -262,37 +262,37 @@ Partial Class Form1
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(135, 46)
         Me.GroupBox2.TabIndex = 15
-        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.TabStop = false
         Me.GroupBox2.Text = "Language / Idioma"
         '
         'SpanishRButton
         '
-        Me.SpanishRButton.AutoSize = True
+        Me.SpanishRButton.AutoSize = true
         Me.SpanishRButton.Location = New System.Drawing.Point(70, 19)
         Me.SpanishRButton.Name = "SpanishRButton"
         Me.SpanishRButton.Size = New System.Drawing.Size(63, 17)
         Me.SpanishRButton.TabIndex = 4
-        Me.SpanishRButton.TabStop = True
+        Me.SpanishRButton.TabStop = true
         Me.SpanishRButton.Text = "Español"
-        Me.SpanishRButton.UseVisualStyleBackColor = True
+        Me.SpanishRButton.UseVisualStyleBackColor = true
         '
         'EnglishRButton
         '
-        Me.EnglishRButton.AutoSize = True
+        Me.EnglishRButton.AutoSize = true
         Me.EnglishRButton.Location = New System.Drawing.Point(6, 19)
         Me.EnglishRButton.Name = "EnglishRButton"
         Me.EnglishRButton.Size = New System.Drawing.Size(59, 17)
         Me.EnglishRButton.TabIndex = 3
-        Me.EnglishRButton.TabStop = True
+        Me.EnglishRButton.TabStop = true
         Me.EnglishRButton.Text = "English"
-        Me.EnglishRButton.UseVisualStyleBackColor = True
+        Me.EnglishRButton.UseVisualStyleBackColor = true
         '
         'ProgressLog
         '
         Me.ProgressLog.BackColor = System.Drawing.Color.White
         Me.ProgressLog.Location = New System.Drawing.Point(475, 25)
         Me.ProgressLog.Name = "ProgressLog"
-        Me.ProgressLog.ReadOnly = True
+        Me.ProgressLog.ReadOnly = true
         Me.ProgressLog.Size = New System.Drawing.Size(406, 213)
         Me.ProgressLog.TabIndex = 16
         Me.ProgressLog.Text = ""
@@ -304,11 +304,11 @@ Partial Class Form1
         Me.SaveLogButton.Size = New System.Drawing.Size(310, 23)
         Me.SaveLogButton.TabIndex = 17
         Me.SaveLogButton.Text = "Save Log"
-        Me.SaveLogButton.UseVisualStyleBackColor = True
+        Me.SaveLogButton.UseVisualStyleBackColor = true
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
+        Me.Label1.AutoSize = true
         Me.Label1.Location = New System.Drawing.Point(472, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(28, 13)
@@ -322,7 +322,7 @@ Partial Class Form1
         Me.ClearLogButton.Size = New System.Drawing.Size(90, 23)
         Me.ClearLogButton.TabIndex = 19
         Me.ClearLogButton.Text = "Clear Log"
-        Me.ClearLogButton.UseVisualStyleBackColor = True
+        Me.ClearLogButton.UseVisualStyleBackColor = true
         '
         'StatusStrip1
         '

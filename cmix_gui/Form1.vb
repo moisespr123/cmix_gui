@@ -19,7 +19,8 @@
         {"16d", "cmix_v16d"},
         {"16e", "cmix_v16e"},
         {"16f", "cmix_v16f"},
-        {"17", "cmix_v17"}
+        {"17", "cmix_v17"},
+        {"18", "cmix_v18"}
         }
 
 
@@ -136,10 +137,6 @@
         Return True
     End Function
 
-    Private Sub SetOutputFileNamePathWithoutExtension(Path As String)
-        OutputFileTxt.Text = My.Computer.FileSystem.GetParentPath(Path) + "\" + IO.Path.GetFileNameWithoutExtension(Path)
-    End Sub
-
     Public Function GetInputNameAndUpdateForm(Path As String) As String
         Dim CheckIfFile = CheckIfFileOrFolder(Path)
         If CheckIfFile = "File" Then
@@ -147,7 +144,7 @@
             If FileExtension.Contains("cmix") Then
                 SetVersion(FileExtension)
                 If SetDict(FileExtension) Then
-                    SetOutputFileNamePathWithoutExtension(Path)
+                    OutputFileTxt.Text = IO.Path.ChangeExtension(Path, Nothing)
                     ExtractRButton.Checked = True
                 End If
             End If
