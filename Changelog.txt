@@ -1,59 +1,65 @@
+v1.9 (9/28/2021)
+- Adds support for cmix_v19.
+
+v1.8 (8/3/2019)
+- Adds support for cmix_v18.
+
 v1.7 (4/7/2019)
--Adds support for cmix_v17
+- Adds support for cmix_v17.
 
 v1.6 (1/13/2019)
--Adds support for cmix_v16f
--Can now drag and drop a file into the software icon
--Real-time log improvements
+- Adds support for cmix_v16f.
+- Can now drag and drop a file into the software icon.
+- Real-time log improvements.
 
 v1.5 (11/13/2018)
--Adds support for cmix_v16e
--Log now displays cmix output
--Shows original and compressed file sizes after compression
+- Adds support for cmix_v16e.
+- Log now displays cmix output.
+- Shows original and compressed file sizes after compression.
 
 v1.4r7 (11/12/2018)
--Adds support for cmix_v16c and cmix_v16d
+- Adds support for cmix_v16c and cmix_v16d.
 
 v1.4r6
--Adds support for cmix_v16a and cmix_v16b
+- Adds support for cmix_v16a and cmix_v16b.
 
 v1.4r5 (9/17/2018)
--Adds support for cmix_v15i
+- Adds support for cmix_v15i.
 
 v1.4r4 (9/4/2018)
--Adds support for cmix_v15h
+- Adds support for cmix_v15h.
 
 v1.4r3 (9/3/2018)
--Adds support for cmix_v15g
+- Adds support for cmix_v15g.
 
 v1.4r2 (8/28/2018)
--Adds support for cmix_v15f
+- Adds support for cmix_v15f.
 
 v1.4 (8/27/2018)
--Adds support for cmix_v15d and cmix_v15e
+- Adds support for cmix_v15d and cmix_v15e.
 
 v1.3 (7/11/2018)
--Adds support for cmix_v15c
+- Adds support for cmix_v15c.
 
 v1.2 (6/20/2018)
--Added Clear Log Button
--Added RAM information
+- Added Clear Log Button.
+- Added RAM information.
 
 v1.1 (6/4/2018)
--Added log to see progress
--Can save log to file
--GUI will not get locked when a task is running
--GUI will update the Output file textbox accordingly if a file or folder is manually typed in the Input file/folder textbox
--Fixed bug that the Output filename would not be updated when using Preprocessing mode
+- Added log to see progress.
+- Can save log to file.
+- GUI will not get locked when a task is running.
+- GUI will update the Output file textbox accordingly if a file or folder is manually typed in the Input file/folder textbox.
+- Fixed bug that the Output filename would not be updated when using Preprocessing mode.
 
 v1.0r4 (5/24/2018)
--Added Spanish language
+- Added Spanish language.
 
 v1.0r3 (5/23/2018)
--Added folder extraction to extract cmix files inside the specified folder
+- Added folder extraction to extract cmix files inside the specified folder.
 
 v1.0r2 (5/23/2018)
--Added preprocessing
+- Added preprocessing.
 
 v1.0 (5/22/2018)
--Initial release
+- Initial release.
