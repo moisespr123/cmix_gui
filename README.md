@@ -8,7 +8,9 @@ When extracting a file, it will check the file extension and adjust version and 
 
 Released under the GPL license. Feel free to tweak with this GUI!
 
-Software written with Visual Studio 2017 in the Visual Basic .NET language. Updates are done in VS2019. Targets the .NET Framework 4.8.
+Software written with Visual Studio 2017 in the Visual Basic .NET language. Updates are done in VS2022. Targets the .NET Framework 4.8.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Screenshot
 

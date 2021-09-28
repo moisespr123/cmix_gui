@@ -20,7 +20,8 @@
         {"16e", "cmix_v16e"},
         {"16f", "cmix_v16f"},
         {"17", "cmix_v17"},
-        {"18", "cmix_v18"}
+        {"18", "cmix_v18"},
+        {"19", "cmix_v19"}
         }
 
 
@@ -242,8 +243,9 @@
         UpdateLog("Start time: " & Date.Now())
         UpdateLog("----------")
         Using process As New Process
-            process.StartInfo.WorkingDirectory = "exes\" + cmix_version
-            process.StartInfo.FileName = "exes\" + cmix_version + "\" + My.Settings.Version + ".exe"
+            Dim SoftwareDirectory As String = IO.Path.GetDirectoryName(Process.GetCurrentProcess.MainModule.FileName)
+            process.StartInfo.WorkingDirectory = SoftwareDirectory + "\exes\" + cmix_version
+            process.StartInfo.FileName = SoftwareDirectory + "\exes\" + cmix_version + "\" + My.Settings.Version + ".exe"
             process.StartInfo.Arguments = action + " """ + Input + """ """ + Output + """"
             process.StartInfo.CreateNoWindow = Not ShowCMD.Checked
             process.StartInfo.RedirectStandardOutput = Not ShowCMD.Checked
